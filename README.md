@@ -7,7 +7,7 @@ default engineering principles. It is adapted from superpowers and pstack, and i
 
 ## Status
 
-Stage 1 is released as 0.1.0: the existing-project area and the core general skills. Stage 2, the new-project
+Stage 1 is version 0.1.0: the existing-project area and the core general skills. Stage 2, the new-project
 area, is planned.
 
 ## What is in it
