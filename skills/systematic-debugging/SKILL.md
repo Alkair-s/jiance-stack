@@ -236,7 +236,7 @@ You MUST complete each phase before proceeding to the next.
    - Are we "sticking with it through sheer inertia"?
    - Should we refactor architecture vs. continue fixing symptoms?
 
-   **Stop and bring this to the owner before attempting more fixes: changing the architecture is an approval point (design 6.2), not something to decide alone**
+   **Stop and bring this to the owner before attempting more fixes: changing the architecture is an owner approval point, not something to decide alone**
 
    This is NOT a failed hypothesis - this is a wrong architecture.
 
@@ -259,7 +259,7 @@ If you catch yourself thinking:
 
 **If 3+ fixes failed:** Question the architecture (Phase 4, step 5)
 
-## The owner's Signals You're Doing It Wrong
+## Owner Signals You're Doing It Wrong
 
 **Watch for these redirections:**
 - "Is that not happening?" - You assumed without verifying
