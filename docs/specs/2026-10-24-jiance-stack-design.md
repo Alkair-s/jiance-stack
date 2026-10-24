@@ -163,6 +163,9 @@ approved plan or contract):
    reuse or inline), or **unsure** (goes to the owner).
 4. The verdict is logged with the other rulings of the task.
 
+The owner's direct answer about a specific helper is also a verdict (the owner's words: "evaluated by me or by a
+reviewer"), logged the same way. A general "go ahead" on the task is not an answer about a helper.
+
 Not gated: private one-off code inside a single function; helpers listed in a plan the owner approved. A project
 may set "always ask the owner". Review findings that suggest extracting a helper (e.g. from the thermo-nuclear
 lens) pass the same gate; reviews prefer deleting or reusing code over adding it.
