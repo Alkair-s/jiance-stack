@@ -19,25 +19,26 @@ slice fast and to stop once the flow is clear. Tell an explainer to reconcile th
 contradiction in the code itself.
 
 If the Agent tool is not available, do the exploring and explaining yourself with Read, Grep and Glob, following the
-same steps and the same prompts. If the question says what the owner is about to change, put the depth on that part and
-keep the rest short. Give file and line references for the steps that matter.
+same steps and the same prompts.
 
 ## 1. Assess complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
 
-- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. Spawn one explainer that explores and explains in one pass, built from `references/explainer-prompt.md` without the explorer-findings section. Go to step 4.
+**Focus.** Note what the asker is about to change or work on ("I am about to change the store"), if they said. That is the focus: the depth of every explorer and the explainer goes there, and the rest stays short. With no stated focus, leave it as "none". Always give file and line references for the steps that matter.
+
+- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. Spawn one explainer that explores and explains in one pass, built from `references/explainer-prompt.md` (focus filled in) without the explorer-findings section. Go to step 4.
 - **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): go to step 2.
 
 When in doubt, take the simple path.
 
 ## 2. Explore (complex only)
 
-Decompose the question into 2 to 4 angles, each a distinct slice of the subsystem. Spawn all explorers in a single message, each with `references/explorer-prompt.md` and its angle filled in.
+Decompose the question into 2 to 4 angles, each a distinct slice of the subsystem. Make sure one angle covers the focus in depth. Spawn all explorers in a single message, each with `references/explorer-prompt.md`, its angle and the focus filled in.
 
 ## 3. Synthesize (complex only)
 
-Once all explorers have returned, spawn one explainer with `references/explainer-prompt.md` and every explorer's findings filled in.
+Once all explorers have returned, spawn one explainer with `references/explainer-prompt.md` every explorer's findings and the focus filled in.
 
 ## 4. Present
 

@@ -16,6 +16,12 @@ Other explorers are investigating different slices of the same subsystem in para
 
 {EXPLORATION_ANGLE}
 
+## Focus
+
+{FOCUS}
+
+If a focus is given, go deepest there (every step, lock, branch and error path, with file:line). Keep the rest brief. If it is "none", ignore this.
+
 ## Output
 
 ### Components Found

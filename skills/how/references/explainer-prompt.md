@@ -16,6 +16,12 @@ You are writing an architectural explanation for a senior engineer. Multiple exp
 
 {EXPLORER_FINDINGS_ALL}
 
+## Focus
+
+{FOCUS}
+
+If a focus is given, the reader is about to work on it: put the depth of How It Works there and keep the rest short. If it is "none", ignore this. Give file:line references either way.
+
 ## Instructions
 
 The explorers each investigated a different angle of the same subsystem. Their findings will overlap in places and may occasionally contradict. Reconcile them. Merge overlapping descriptions, resolve contradictions by checking the code yourself, and combine the separate slices into a unified picture.
