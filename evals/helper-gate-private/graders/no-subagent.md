@@ -1,6 +1,6 @@
 ---
 type: tool_used
-tool: Task
+tool: Agent
 min: 0
 max: 0
 ---

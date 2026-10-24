@@ -28,6 +28,11 @@ helper too.
 If the private code later moves out of its function (module level, a shared file, a second caller), it is a new
 helper from that moment and passes the gate.
 
+**"Go ahead" is not a helper approval.** The owner asking for the feature ("add that", "no questions needed, go
+ahead", "both modules need it") approves the change, not a new helper you chose to write for it. The gate is the
+owner's own rule, so it still runs: search, justify, fresh reviewer, log. Only a plan the owner approved that
+names the helper, or the owner's direct answer about this specific helper, replaces the reviewer.
+
 ### "Always ask the owner"
 
 A project may set "always ask the owner" for new helpers (in its `CLAUDE.md`, contracts or decision log). Then
@@ -91,13 +96,20 @@ If the Agent tool is not available, say so and treat the case as **unsure**: the
 
 ### 4. Log the verdict
 
-Log one line with the other rulings of the task:
+Log the gate with the other rulings of the task:
 
 - During plan execution, in the task's rulings or ledger file when one exists.
 - Otherwise in your reply to the owner.
 
+The log is a short block, so the owner can check the gate without the transcript: the justification from step 2
+(what the helper does, where it is used, what you searched and found, why existing code does not fit) and the
+verdict line. A bare "the reviewer agreed" is not a log.
+
 ```
-Helper gate: <helper name>: <needed | not needed | unsure> (<reviewer model or "owner">). <one-sentence reason>
+Helper gate: <helper name>
+Does / used by: <one line>
+Searched: <queries and hits>; existing code does not fit because <reason>
+Verdict: <needed | not needed | unsure> (fresh reviewer, <model>, or "owner"). <one-sentence reason>
 ```
 
 ## Review findings that suggest a helper
@@ -133,7 +145,10 @@ and none in the existing dependencies. The justification names both call sites a
 each would duplicate the backoff logic. The reviewer returns `needed`, and the log line reads:
 
 ```
-Helper gate: retry.Do(ctx, attempts, fn): needed (sonnet). Two call sites, no existing retry code or dependency.
+Helper gate: retry.Do(ctx, attempts, fn)
+Does / used by: retries a call with backoff; used by upload/client.go and sync/fetch.go
+Searched: grep "retry|backoff|attempt" (no hits), go.mod deps (none fit); existing code does not fit because none exists
+Verdict: needed (fresh reviewer, sonnet). Two call sites would otherwise duplicate the backoff logic.
 ```
 
 ## Red flags
