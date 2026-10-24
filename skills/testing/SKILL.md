@@ -49,6 +49,15 @@ Do these in order, for each behaviour.
    your file. Any failure you see, including one you did not cause, goes in the report by name.
 7. **Clean up while green.** Rename and remove duplication, then rerun. Do not add behaviour.
 
+**When the change gets no automated test** (step 2 found it would be a bad test), steps 3 to 7 become:
+
+3. **Make the smallest change.**
+4. **Run the closest real check** (see "Substitutes"), or say it is not run and why.
+5. **Record the substitute and its reason.** Append one item to the project's test checklist or progress log
+   (plan or commit message if neither exists): what is checked, how, and why an automated test would be a bad
+   test here. This append is pre-authorized. Do it before you report done; the change is not done without it.
+6. **Report** the substitute, the check's result and where the reason is written.
+
 Wrote production code before the test? Set it aside, write the test, watch it fail against the code without
 the change, then bring the change back. A test written after the code passes at once and proves nothing.
 
