@@ -43,7 +43,8 @@ conversation. Do not write or edit code until the owner has confirmed what they 
 1. **Existing project.** The repo already has code. Every fix, feature, behaviour tweak or new test, however
    small (a one-line bug fix, a colour), starts with `jiance-stack:change-request`: load it before the first
    edit. It runs `jiance-stack:onboard-project` first when this session has no role map yet. For other project
-   tasks (a review, a commit message), run `jiance-stack:onboard-project` at the first one of a session. Where the project's rules and a default
+   tasks (a review, a commit message), run `jiance-stack:onboard-project` at the first one of a session.
+   Where the project's rules and a default
    disagree, follow the project and mention it once per session, naming the project's rule and the
    jiance-stack default it replaces (for example a commit format instead of Conventional Commits): the role
    map's `replaces P<n>` cell counts as that mention; a conflict that first comes up later gets one sentence.

@@ -32,6 +32,8 @@ in the router. With no such docs, a top-level package or folder is one module; t
 one module.
 
 Size never skips step 1, the testing rule (step 6), the helper gate (step 5) or verification (step 9).
+A change with no behaviour change (a refactor, rename or config change) needs no new test, only the existing
+suite green, run and quoted (`jiance-stack:testing`); in the step 9 report, "Order" is then "n/a".
 
 ## Approval points: stop and wait
 
