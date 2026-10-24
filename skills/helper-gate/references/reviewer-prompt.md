@@ -1,8 +1,8 @@
 # Helper gate reviewer prompt
 
 The helper gate fills this template and sends it to a fresh reviewer subagent with the Agent tool
-(`subagent_type: general-purpose`, `model` from the `helper-gate-reviewer` role in `config/models.md`). Replace
-each `{{...}}` block with the real content. Send the whole text below the line.
+(`subagent_type: general-purpose`, `model` from the `helper-gate-reviewer` role in `config/models.md` at the plugin root, three directories up
+from this file: `../../../config/models.md`). Replace each `{{...}}` block with the real content. Send the whole text below the line.
 
 ---
 

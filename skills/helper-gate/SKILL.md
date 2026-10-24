@@ -31,13 +31,14 @@ helper from that moment and passes the gate.
 **"Go ahead" is not a helper approval.** The owner asking for the feature ("add that", "no questions needed, go
 ahead", "both modules need it") approves the change, not a new helper you chose to write for it. The gate is the
 owner's own rule, so it still runs: search, justify, fresh reviewer, log. Only a plan the owner approved that
-names the helper, or the owner's direct answer about this specific helper, replaces the reviewer.
+names the helper, or the owner's direct answer about this specific helper, replaces the reviewer. The rule is
+"evaluated by me or by a reviewer", so the owner's answer is a verdict: log it in step 4 like any other.
 
 ### "Always ask the owner"
 
 A project may set "always ask the owner" for new helpers (in its `CLAUDE.md`, contracts or decision log). Then
 steps 1 and 2 still run, and the owner gives the verdict instead of the reviewer: present the justification and
-the search results, then stop and wait (approval point).
+the search results, then stop and wait (approval point). Log the owner's answer as the verdict (step 4).
 
 ## The steps
 
@@ -76,10 +77,13 @@ Why not inline: <why the code cannot stay inside one function>
 
 Dispatch a reviewer subagent with the Agent tool:
 
-- `subagent_type: general-purpose`
-- `model`: the `helper-gate-reviewer` role in `config/models.md` (this plugin; a project's `CLAUDE.md` `## Models`
-  section overrides it). Today that is `sonnet`.
-- prompt: `references/reviewer-prompt.md` with the justification, the search results and the diff filled in.
+- `subagent_type: general-purpose`, not `Explore`: the reviewer must read whole files and search again, and
+  Explore reads only excerpts.
+- `model`: the `helper-gate-reviewer` role in `config/models.md` at the plugin root (two directories up from this
+  skill's base directory: `../../config/models.md`). A project's `CLAUDE.md` `## Models` section overrides it.
+  Today that is `sonnet`.
+- prompt: `references/reviewer-prompt.md` in this skill's directory, with the justification, the search results
+  and the diff filled in.
 
 The reviewer must be **fresh**: a subagent that did not write the code. Never give the verdict yourself, and
 never ask the implementer subagent that wrote the helper.
@@ -92,7 +96,8 @@ The reviewer returns one verdict and a one-paragraph reason:
 | **not needed** | Do what the reviewer names instead: reuse the existing code it points to, or inline the code. Do not add the helper. |
 | **unsure** | Approval point: stop, show the owner the justification and the reviewer's reason, and wait for their decision. |
 
-If the Agent tool is not available, say so and treat the case as **unsure**: the owner decides.
+If the reviewer's answer has no clear `needed`, `not needed` or `unsure` verdict, treat it as **unsure**: it goes
+to the owner. If the Agent tool is not available, say so and treat the case as **unsure**: the owner decides.
 
 ### 4. Log the verdict
 
@@ -109,7 +114,14 @@ verdict line. A bare "the reviewer agreed" is not a log.
 Helper gate: <helper name>
 Does / used by: <one line>
 Searched: <queries and hits>; existing code does not fit because <reason>
-Verdict: <needed | not needed | unsure> (fresh reviewer, <model>, or "owner"). <one-sentence reason>
+Verdict: <needed | not needed | unsure> (fresh reviewer, <model>). <one-sentence reason>
+```
+
+When the owner decided (an `unsure` verdict, a malformed reviewer answer, "always ask the owner", or the owner's
+direct answer about this helper), the verdict line names the owner and gives the owner's reason:
+
+```
+Verdict: owner: <needed | not needed>. <the owner's reason, in their words where possible>
 ```
 
 ## Review findings that suggest a helper

@@ -17,7 +17,8 @@ When rules conflict, the higher one wins:
 1. The owner's direct instructions. 2. The project's own rules (CLAUDE.md, contracts, principles, decision log, written overrides). 3. jiance-stack defaults (principles/defaults.md). 4. Individual skill instructions.
 
 The defaults live in `principles/defaults.md` and the model for each subagent role lives in `config/models.md`,
-both in this plugin. A project's own files override them where they speak.
+both at the plugin root (two directories up from this skill's base directory: `../../principles/defaults.md` and
+`../../config/models.md`). A project's own files override them where they speak.
 
 ## When to check for a skill
 
