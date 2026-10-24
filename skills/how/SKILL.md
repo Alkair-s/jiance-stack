@@ -38,7 +38,7 @@ Decompose the question into 2 to 4 angles, each a distinct slice of the subsyste
 
 ## 3. Synthesize (complex only)
 
-Once all explorers have returned, spawn one explainer with `references/explainer-prompt.md` every explorer's findings and the focus filled in.
+Once all explorers have returned, spawn one explainer with `references/explainer-prompt.md`, with every explorer's findings and the focus filled in.
 
 ## 4. Present
 
