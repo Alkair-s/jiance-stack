@@ -15,7 +15,8 @@ a passing run after.
 **Core principle:** if you did not watch the test fail, you do not know that it tests the right thing.
 
 This applies to every change, even one line. A style, copy or config edit that no sensible test covers still
-gets its recorded substitute and written reason; "too small to check" is not a reason.
+gets its recorded substitute, with the reason appended to the project's test checklist or progress log before
+you reply (see "Substitutes"); "too small to check" is not a reason.
 
 ## The rule
 
@@ -93,14 +94,19 @@ When an automated test would be bad, use the closest real check and record it:
 | Measured run | Performance, size, timing targets | The command, the numbers before and after |
 | Log assertion | Behaviour visible only in logs | The command, the log line expected and seen |
 
-For every substitute:
+For every substitute, before you reply:
 
-1. **Write the reason down in the project's documentation**: the plan and the progress log, or the test
-   checklist (`docs/test-checklist.md` or the project's equivalent). Say what is checked, how, and why an
-   automated test would be a bad test here. A reason given only in your reply does not count.
-2. If the project has no plan, progress log or test checklist, say so and ask the owner where the record goes
-   (creating a test checklist is an edit to the project's docs and needs the owner's OK).
-3. Say in your reply that you used a substitute, which one, and where the reason is written.
+1. **Append the reason to the project's documentation now, with Edit or Write**: the progress log or the test
+   checklist (`docs/test-checklist.md` or the project's equivalent) when one exists. Add one item that says what
+   is checked, how, and why an automated test would be a bad test here. Append only; never rewrite existing
+   entries. A reason given only in your reply does not count.
+2. **This append is pre-authorized.** Writing a substitute's reason is part of the owner's testing rule, so it
+   is not an "edit to the project's own docs" that needs approval. Do not ask; do it. The record is part of
+   the change itself: "this is the whole change", "only touch this file" or "no questions" still include it.
+   Search for the file first (Glob for `*checklist*`, `*progress*`, `PROGRESS*`, `docs/`).
+3. If neither a progress log nor a test checklist exists, put the reason in the plan or in the change's commit
+   message, and tell the owner where it went.
+4. Say in your reply that you used a substitute, which one, and where the reason is written.
 
 Example checklist item for a style change:
 

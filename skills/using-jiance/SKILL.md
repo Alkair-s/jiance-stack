@@ -95,7 +95,8 @@ going on reversible work.
 - security-review findings, before any fix;
 - missed performance targets, before any optimizing;
 - setting up structure on an unstructured project;
-- any edit to an existing project's own docs or principles that its rules do not already ask for;
+- any edit to an existing project's own docs or principles that its rules do not already ask for, except appends
+  that a jiance-stack rule the owner approved requires, such as a test substitute's reason;
 - new helpers when the reviewer is unsure, or always when the project sets "always ask".
 
 ## Working habits
