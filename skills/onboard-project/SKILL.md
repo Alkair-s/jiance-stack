@@ -103,11 +103,11 @@ owner asks you to keep it.
 
 ## Following the rules after onboarding
 
-- **Project wins.** Where a project file and a jiance-stack default disagree, follow the project file and say
-  so once, at the point where it first matters, in one sentence that names both:
-  "CONTRIBUTING.md asks for `[module] message` commits, so I use that instead of the default Conventional
-  Commits (P13)." Name the default. "The format comes from CONTRIBUTING.md" alone does not tell the owner
-  that a default was set aside. Do not repeat it later in the session.
+- **Project wins.** Where a project file and a jiance-stack default disagree, the project's convention wins.
+  Say so once, at the point where it first matters, in one sentence that names the project's rule and the
+  default it replaces: "STYLE.md allows files up to 600 lines, so I keep `parser.go` whole instead of
+  splitting it at the default 300 (P14)." Name the default. "This follows STYLE.md" alone does not tell the
+  owner that a default was set aside. Do not repeat it later in the session.
 - **Rules apply to everything you produce,** not just code: commit messages, changelog lines, branch names,
   file layout, test style. Before writing one of those, check the map for the row that governs it.
 - **Defaults fill gaps only.** A `none` row means the default applies. A filled row means the default for that
