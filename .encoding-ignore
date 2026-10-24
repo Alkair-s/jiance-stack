@@ -1,0 +1,2 @@
+# Fixtures contain bad bytes on purpose.
+tests/fixtures/encoding/
