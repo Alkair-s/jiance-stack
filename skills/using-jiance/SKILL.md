@@ -40,9 +40,10 @@ conversation. Do not write or edit code until the owner has confirmed what they 
 
 ## Pick the area
 
-1. **Existing project.** The repo already has code. Run `jiance-stack:onboard-project` at the first project
-   task of a session (a fix, a feature, a review, even a commit message) to map its rules, then use
-   `jiance-stack:change-request` for every fix, feature or new test. Where the project's rules and a default
+1. **Existing project.** The repo already has code. Every fix, feature, behaviour tweak or new test, however
+   small (a one-line bug fix, a colour), starts with `jiance-stack:change-request`: load it before the first
+   edit. It runs `jiance-stack:onboard-project` first when this session has no role map yet. For other project
+   tasks (a review, a commit message), run `jiance-stack:onboard-project` at the first one of a session. Where the project's rules and a default
    disagree, follow the project and mention it once per session, naming the project's rule and the
    jiance-stack default it replaces (for example a commit format instead of Conventional Commits): the role
    map's `replaces P<n>` cell counts as that mention; a conflict that first comes up later gets one sentence.
@@ -59,9 +60,9 @@ If you cannot tell which area applies, ask the owner one short question.
 
 | Request type | First skill |
 |---|---|
-| First project task of a session on an existing codebase, even a commit message | `jiance-stack:onboard-project` |
+| First project task of a session on an existing codebase that is not a change (a review, a commit message) | `jiance-stack:onboard-project` |
 | Owner said yes to adding the structure (router CLAUDE.md, contracts, decisions, progress) | `jiance-stack:setup-structure` |
-| Fix, feature, flag, option or new tests on an existing project | `jiance-stack:change-request` |
+| Fix, feature, flag, option or new tests on an existing project, even one line (it runs onboard-project first) | `jiance-stack:change-request` |
 | Create or change behaviour, design an idea, "let's build X" | `jiance-stack:brainstorming` |
 | Agreed spec or design that needs a step-by-step plan | `jiance-stack:writing-plans` |
 | Approved plan to carry out in this session | `jiance-stack:executing-plans` |
