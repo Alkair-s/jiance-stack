@@ -1,0 +1,13 @@
+{
+  "name": "jiance-stack",
+  "description": "Skill stack for disciplined AI coding: inspect, test, prove.",
+  "owner": { "name": "Alkair-s" },
+  "plugins": [
+    {
+      "name": "jiance-stack",
+      "source": "./",
+      "description": "Inspect, test, prove: a self-contained skill stack for disciplined AI coding, built on superpowers and pstack.",
+      "version": "0.1.0"
+    }
+  ]
+}

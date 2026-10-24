@@ -1,0 +1,10 @@
+{
+  "name": "jiance-stack",
+  "version": "0.1.0",
+  "description": "Inspect, test, prove: a self-contained skill stack for disciplined AI coding, built on superpowers and pstack.",
+  "author": { "name": "Alkair-s" },
+  "homepage": "https://github.com/Alkair-s/jiance-stack",
+  "repository": "https://github.com/Alkair-s/jiance-stack",
+  "license": "MIT",
+  "keywords": ["skills", "tdd", "code-review", "workflow", "hooks"]
+}
