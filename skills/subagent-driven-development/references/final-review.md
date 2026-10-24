@@ -34,7 +34,12 @@ plan (top of SKILL.md: destructive or irreversible actions, security-sensitive a
 worktree, a plan so broken every path is a guess, and the owner's approval points) stop you here. There is no second fix wave -
 residual load-bearing findings surface to your human partner when
 finishing-a-development-branch presents the options.
-**Approval points stay out of the fix wave.** A finding that a task passed an approval point (new dependency,public contract change, two or more modules, edit to the project's own docs) without the owner's OK goes to theowner. The fix subagent does not fix it and you do not rule on it; ledger `Approval: <point> - asked` and waitfor the answer (see "Not for the breaker" in fix-loop.md). An unlisted, ungated helper goes back through`jiance-stack:helper-gate` first.
+
+**Approval points stay out of the fix wave.** A finding that a task passed an approval point (new dependency,
+public contract change, two or more modules, edit to the project's own docs) without the owner's OK goes to the
+owner. The fix subagent does not fix it and you do not rule on it; ledger `Approval: <point> - asked` and wait
+for the answer (see "Not for the breaker" in fix-loop.md). An unlisted, ungated helper goes back through
+`jiance-stack:helper-gate` first.
 
 ### Finish
 

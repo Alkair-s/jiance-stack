@@ -61,7 +61,11 @@ re-review: it would re-read a diff whose covering tests already answer
 A finding you decide not to fix is a ruling - `Final: Ruling: <finding> -
 <why the code stands> - <cost if wrong>` - and reaches your human partner
 in the rulings list. There is no second fix pass.
-**Approval points stay out of the fix pass.** A finding that a task passed an approval point without the owner'sOK is never fixed or ruled by you. Ledger `Approval: <point> - asked`, put it first in your final message andwait for the owner (see "Not for the breaker" in ../../subagent-driven-development/references/fix-loop.md). Anunlisted, ungated helper goes back through `jiance-stack:helper-gate` before the fix pass.
+
+**Approval points stay out of the fix pass.** A finding that a task passed an approval point without the owner's
+OK is never fixed or ruled by you. Ledger `Approval: <point> - asked`, put it first in your final message and
+wait for the owner (see "Not for the breaker" in ../../subagent-driven-development/references/fix-loop.md). An
+unlisted, ungated helper goes back through `jiance-stack:helper-gate` before the fix pass.
 
 ## Finish
 
