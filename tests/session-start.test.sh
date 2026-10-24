@@ -42,4 +42,25 @@ run_case "runs with empty PATH (exit)" \
 run_case "runs with empty PATH (context)" \
   assert_output_contains 'using-jiance' env -i HOME="$clean" "$BASH" "$H"
 
+# JSON escaping: run a copy of the hook in a fake plugin root whose router holds
+# double quotes, backslashes and a tab, and check the output is one escaped line.
+fake="$tmp/plugin"
+mkdir -p "$fake/hooks" "$fake/skills/using-jiance"
+cp "$H" "$fake/hooks/session-start"
+printf 'say "hi" at C:\\dir\\file\tend\nsecond line\n' > "$fake/skills/using-jiance/SKILL.md"
+
+escaped_json() {
+  local out
+  out="$(env HOME="$clean" bash "$fake/hooks/session-start" 2>&1)"
+  case "$out" in
+    *$'\n'*) echo "  output spans more than one line: $out" >&2; return 1 ;;
+  esac
+  case "$out" in
+    *'say \"hi\" at C:\\dir\\file\tend\nsecond line'*) return 0 ;;
+  esac
+  echo "  escaping wrong: $out" >&2
+  return 1
+}
+run_case "escapes quotes, backslashes, tabs and newlines" escaped_json
+
 exit "$rc"

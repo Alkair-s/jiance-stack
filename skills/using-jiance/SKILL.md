@@ -41,7 +41,8 @@ conversation. Do not write or edit code until the owner has confirmed what they 
 1. **Existing project.** The repo already has code. Run `jiance-stack:onboard-project` once per project to map
    its rules, then use `jiance-stack:change-request` for every fix, feature or new test.
 2. **New project from scratch.** An empty or nearly empty repo, or a planning brief to turn into a project.
-   The area 1 skills are stage 2 and not shipped yet (see below). For now, use `jiance-stack:brainstorming`,
+   The new-project skills (planning-brief, import-brief, run-milestone and the rest) are stage 2 and not
+   shipped yet (see below). For now, use `jiance-stack:brainstorming`,
    then `jiance-stack:writing-plans`, and follow the plan with the approval points below.
 3. **General purpose.** Questions, reviews, explanations, writing and debugging that are not tied to a
    project workflow. Pick from the trigger table.
