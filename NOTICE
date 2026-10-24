@@ -4,8 +4,9 @@ Many skills in this plugin are adapted from superpowers by Jesse Vincent
 (https://github.com/obra/superpowers), and from pstack by Lauren Tan and
 thermos, both from Cursor (https://github.com/cursor/plugins). Each adapted
 skill carries a credit line, and UPSTREAM.md records the source path, pinned
-commit and changes for every one. All three upstream projects are MIT licensed;
-their license texts follow in full.
+commit and changes for every one. The session-start hook (hooks/session-start
+and hooks/run-hook.cmd) is adapted from superpowers in the same way. All three
+upstream projects are MIT licensed; their license texts follow in full.
 
 ================================================================================
 superpowers (https://github.com/obra/superpowers)

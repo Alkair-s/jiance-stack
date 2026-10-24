@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# Adapted from obra/superpowers hooks/session-start at 2ce8aa1 by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+# SessionStart hook for jiance-stack: injects the using-jiance router.
+# Prints the Claude Code hook JSON and always exits 0, so a problem here never
+# blocks a session. Uses bash builtins only for reading files and escaping
+# JSON, because a SessionStart hook can run with a broken or empty PATH.
+
+# Plugin root: split $0 on its last / or \ instead of calling dirname.
+case "$0" in
+  */*|*\\*) script_dir="$(cd "${0%[/\\]*}" && pwd)" ;;
+  *) script_dir="$(pwd)" ;;
+esac
+plugin_root="$(cd "${script_dir}/.." && pwd)"
+
+router_md="${plugin_root}/skills/using-jiance/SKILL.md"
+if [ -r "$router_md" ]; then
+  router="$(<"$router_md")"
+else
+  router="jiance-stack: could not read skills/using-jiance/SKILL.md. Load it with the Skill tool: jiance-stack:using-jiance."
+fi
+
+# Warn when superpowers or pstack is installed: their routers compete.
+# Covers <plugins>/[up to 3 dirs]/<name>/[optional version dir]/.claude-plugin/plugin.json.
+warning=""
+plugins_dir="${HOME:-}/.claude/plugins"
+if [ -n "${HOME:-}" ] && [ -d "$plugins_dir" ]; then
+  shopt -s nullglob
+  for name in superpowers pstack; do
+    for pre in "" "*/" "*/*/" "*/*/*/"; do
+      for post in "" "*/"; do
+        for f in "$plugins_dir"/${pre}"$name"/${post}.claude-plugin/plugin.json; do
+          if [ -f "$f" ]; then
+            warning="jiance-stack: superpowers/pstack is installed. If it is enabled, disable it: its router and TDD rule compete with jiance-stack (see README)."
+            break 4
+          fi
+        done
+      done
+    done
+  done
+  shopt -u nullglob
+fi
+
+# Escape for JSON with parameter substitution (one C-level pass each).
+escape_for_json() {
+  local s="$1"
+  s="${s//\\/\\\\}"
+  s="${s//\"/\\\"}"
+  s="${s//$'\n'/\\n}"
+  s="${s//$'\r'/\\r}"
+  s="${s//$'\t'/\\t}"
+  printf '%s' "$s"
+}
+
+context="You have jiance-stack. Below is the full content of the 'jiance-stack:using-jiance' skill, the router. Load every other skill with the Skill tool.
+
+${router}"
+if [ -n "$warning" ]; then
+  context="${warning}
+
+${context}"
+fi
+escaped="$(escape_for_json "$context")"
+
+# Pipe through cat when it exists, so an EPIPE on Windows lands on cat
+# instead of printf; fall back to printf alone when PATH is empty.
+if command -v cat >/dev/null 2>&1; then
+  printf '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"%s"}}\n' "$escaped" | cat
+else
+  printf '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"%s"}}\n' "$escaped"
+fi
+
+exit 0

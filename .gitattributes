@@ -1,3 +1,5 @@
 * text=auto eol=lf
 *.cmd text eol=crlf
 tests/fixtures/encoding/** -text
+# The polyglot hook wrapper is parsed by bash too, so it keeps LF (as upstream does).
+hooks/run-hook.cmd text eol=lf

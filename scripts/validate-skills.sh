@@ -65,8 +65,13 @@ for dir in "$skills_dir"/*/; do
   fi
 done
 
+# A row whose first cell holds a "/" names an adapted file (e.g. hooks/run-hook.cmd),
+# relative to the directory of UPSTREAM.md; any other row names a skill.
 for a in ${adapted[@]+"${adapted[@]}"}; do
-  [ -f "$skills_dir/$a/SKILL.md" ] || bad "$a" "listed in UPSTREAM.md but skill does not exist"
+  case "$a" in
+    */*) [ -f "$(dirname "$upstream")/$a" ] || bad "$a" "file listed in UPSTREAM.md does not exist" ;;
+    *) [ -f "$skills_dir/$a/SKILL.md" ] || bad "$a" "listed in UPSTREAM.md but skill does not exist" ;;
+  esac
 done
 
 exit "$fail"

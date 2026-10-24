@@ -24,4 +24,9 @@ run_case "missing description fails" \
 run_case "adapted skill without credit fails" \
   assert_output_contains "FAIL nocredit: credit" bash "$V" "$F/skills-bad" "$F/UPSTREAM.md"
 
+run_case "file row that exists passes" \
+  assert_exit 0 bash "$V" "$F/skills-good" "$F/upstream-files/UPSTREAM.md"
+run_case "missing file row fails" \
+  assert_output_contains "FAIL files/missing.txt: file" bash "$V" "$F/skills-good" "$F/upstream-files/UPSTREAM-missing.md"
+
 exit "$rc"
