@@ -1,5 +1,6 @@
 # The Pre-flight Scan
 
+Paths: links and `../` paths are relative to this file; `bash scripts/...` runs from the skill base directory.
 Part of jiance-stack:subagent-driven-development. Run it once, before
 dispatching Task 1.
 

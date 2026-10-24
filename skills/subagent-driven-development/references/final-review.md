@@ -3,6 +3,9 @@
 Part of jiance-stack:subagent-driven-development. Every task in the plan is
 complete.
 
+Paths: markdown links and `../` paths in this file are relative to this file; `bash scripts/...` commands run from
+the skill base directory (`skills/subagent-driven-development`).
+
 The final whole-branch review gets a package too: run
 `bash scripts/review-package PLAN_FILE MERGE_BASE HEAD` (MERGE_BASE = the commit the
 branch started from, e.g. `git merge-base main HEAD`) and include the
@@ -26,10 +29,12 @@ Then run exactly one scoped re-review of the fix wave
 [re-review-prompt.md](../re-review-prompt.md)).
 Adjudicate any residual findings as in the fix loop's breaker
 (references/fix-loop.md): park with rulings, or rule on the load-bearing
-ones and ledger what you decided. Only the four things that stop a running
-plan (top of SKILL.md) stop you here. There is no second fix wave -
+ones and ledger what you decided. Only the five things that stop a running
+plan (top of SKILL.md: destructive or irreversible actions, security-sensitive actions, side effects outside the
+worktree, a plan so broken every path is a guess, and the owner's approval points) stop you here. There is no second fix wave -
 residual load-bearing findings surface to your human partner when
 finishing-a-development-branch presents the options.
+**Approval points stay out of the fix wave.** A finding that a task passed an approval point (new dependency,public contract change, two or more modules, edit to the project's own docs) without the owner's OK goes to theowner. The fix subagent does not fix it and you do not rule on it; ledger `Approval: <point> - asked` and waitfor the answer (see "Not for the breaker" in fix-loop.md). An unlisted, ungated helper goes back through`jiance-stack:helper-gate` first.
 
 ### Finish
 

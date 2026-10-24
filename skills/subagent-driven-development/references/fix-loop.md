@@ -1,5 +1,6 @@
 # The Fix Loop
 
+Paths: links and `../` paths are relative to this file; `bash scripts/...` runs from the skill base directory.
 Part of jiance-stack:subagent-driven-development. The task review reported
 spec FAIL, a Critical or Important finding, or a WARN item you confirmed as a real
 gap.

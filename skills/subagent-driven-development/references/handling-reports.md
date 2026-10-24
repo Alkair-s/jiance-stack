@@ -1,5 +1,6 @@
 # Handling a Report That Isn't DONE
 
+Paths: links and `../` paths are relative to this file; `bash scripts/...` runs from the skill base directory.
 Part of jiance-stack:subagent-driven-development.
 
 **DONE_WITH_CONCERNS:** The implementer completed the work but flagged doubts. Read the concerns before proceeding. If the concerns are about correctness or scope, address them before review. If they're observations (e.g., "this file is getting large"), note them and proceed to review.
@@ -17,3 +18,7 @@ Part of jiance-stack:subagent-driven-development.
 **NEEDS_CONTEXT at an approval point:** if the implementer stopped because the task hit one of the owner's
 approval points, do not answer it yourself. Ask the owner, wait, ledger `Approval: <point> - <answer>`, then
 re-dispatch with the answer in the dispatch.
+
+**NEEDS_CONTEXT because the implementer has no Agent tool for the helper gate:** run `jiance-stack:helper-gate`
+yourself for that helper (reviewer model: the `helper-gate-reviewer` role of `../../../config/models.md`), ledger
+`Task <N>: Helper-gate: <helper> - <verdict> - <reason>`, then re-dispatch with the verdict in the dispatch.
