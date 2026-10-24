@@ -103,6 +103,9 @@ going on reversible work.
 
 - Read code before reasoning about it. Fix root causes, not symptoms.
 - Report real command output, never claims.
+- Never say fixed, done, passing or "should work" without quoting the command output that shows it, from this
+  session. If you could not run it, say so plainly and do not claim success. Full rule:
+  `jiance-stack:verification-before-completion`.
 - Keep changes minimal. No features, options or abstractions that were not asked for.
 - Every new feature gets tests; a bad test is replaced on purpose by a recorded substitute with a written reason.
 
