@@ -38,4 +38,4 @@ Don't dismiss findings just because they're uncomfortable. The whole point of ad
 - The finding reveals a gap in your mental model of the code
 - You read the finding and think "...yeah, actually"
 
-Be especially careful about dismissing security findings and correctness bugs. These deserve more scrutiny even when they come from a single model.
+Be especially careful about dismissing security findings and correctness bugs. These deserve more scrutiny even when they come from a single model. A finding raised only by the reviewer whose angle it belongs to is not "lone" in the weakening sense: that reviewer was the one looking there, so judge it on its evidence, not on how many reviewers agreed.

@@ -77,3 +77,17 @@ For each security finding, trace the input path through the code and show it.
 - Authentication/authorization gaps in new endpoints
 - Secrets in code, logs, or error messages
 - TOCTOU (time-of-check-time-of-use) in security-critical paths
+
+## Performance and Scalability
+
+Does the change stay fast and bounded under real load, not just on the happy path with one user?
+
+- Unbounded loops and retries: every retry has an attempt limit, a total time limit, or both
+- Retries without backoff or jitter that hammer a struggling dependency
+- Work per request: how much one request does (calls, rows, bytes), and whether it grows with the data
+- N+1 queries or calls: one query or remote call per item where one batched call would do
+- Memory growth: caches, buffers or collections with no size limit or eviction
+- Blocking calls on hot paths: synchronous I/O, sleeps or locks held where requests wait
+- Limits under load: timeouts, pool sizes, rate limits, queue depths, and what happens when one is hit
+
+For each finding, say the input size or load at which it starts to hurt, and trace the path that gets there.

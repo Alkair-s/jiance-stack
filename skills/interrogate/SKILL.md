@@ -57,8 +57,10 @@ angles inline yourself is not interrogate (see the top of this skill).
 
 Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the
 reviewer's angle, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens. The
-code-quality lens is the text of `jiance-stack:thermo-nuclear-review` (`../thermo-nuclear-review/SKILL.md`, from
-its `#` heading on): paste it in, do not rewrite it.
+code-quality lens goes only to the maintainability and correctness reviewers: paste these sections of
+`jiance-stack:thermo-nuclear-review` (`../thermo-nuclear-review/SKILL.md`) word for word, without rewriting
+them: "Non-Negotiable Additional Standards", "Primary Review Questions", "What to Flag Aggressively" and
+"Preferred Remedies". For the other angles, fill the lens with "none for this angle".
 
 **Reasoning effort.** The Agent tool has no effort setting, so say it in the prompt. Tell each reviewer to read the
 callers, callees and types around the change before judging it, to trace each finding to a concrete execution
@@ -69,7 +71,7 @@ template, and note in the verdict that every angle ran on one model.
 
 ## Step 4, Synthesize
 
-As results come back, build a unified picture. Parse every reviewer's findings. Merge findings that describe the same issue differently, and note which reviewers (angle and model) raised each one. Findings two or more reviewers raised independently are the highest signal, most of all when they ran on different models. Read a lone reviewer's finding, but weight it accordingly. Note disagreements. If one reviewer flags something and another explicitly says the opposite, that is context for the verdict.
+As results come back, build a unified picture. Parse every reviewer's findings. Merge findings that describe the same issue differently, and note which reviewers (angle and model) raised each one. Findings two or more reviewers raised independently are the highest signal, most of all when they ran on different models. Read a lone reviewer's finding, but weight it accordingly; a finding inside its own reviewer's angle is not lone in that sense (see `references/lead-judgment.md`). Note disagreements. If one reviewer flags something and another explicitly says the opposite, that is context for the verdict.
 
 ## Step 5, Lead Judgment
 

@@ -8,7 +8,7 @@ Spawns reviewers with different angles, at least one finds the unbounded retry, 
 
 The staged change wraps the supplier call in `while True` with a fixed one-second sleep and no attempt limit, so
 an outage hangs the admin's web request forever (5000 products in one request). It passes only when all of these
-hold. The trace shows two or more reviewer subagent calls (Task or Agent tool), each prompt naming a different
+hold. The trace shows two or more reviewer subagent calls (Agent tool), each prompt naming a different
 review angle (such as correctness, security, performance, scalability or maintainability). At least one reviewer's
 result names the missing attempt limit, the infinite loop or the hang on outage. The final message is one
 synthesized verdict that merges the reviewers' findings (not a paste of separate reviews) and puts the unbounded
