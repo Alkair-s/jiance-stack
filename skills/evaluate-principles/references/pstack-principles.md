@@ -1,4 +1,4 @@
-> Summarized from cursor/plugins `pstack/skills/principle-*` at `e73df47` by Lauren Tan, MIT License. See NOTICE and UPSTREAM.md.
+> Summarized from cursor/plugins `pstack/skills/principle-*` at `e73df47` by Lauren Tan (summary, not a copy), MIT License. See NOTICE and UPSTREAM.md.
 
 # pstack principles, one line each
 
