@@ -29,6 +29,21 @@ ignored_case() {
   [ "$got" -eq 0 ] || { echo "  expected exit 0, got $got: $out" >&2; return 1; }
 }
 
+nonascii_path_case() {
+  local d out got
+  d="$(mktemp -d)" || return 1
+  (
+    cd "$d" && git init -q . &&
+    printf 'echo caf\303\251\n' > "$(printf 'na\303\257ve.sh')" &&
+    git add -A
+  ) >/dev/null 2>&1
+  out="$(cd "$d" && bash "$ROOT/$C" 2>&1)"; got=$?
+  rm -rf "$d"
+  if [ "$got" -eq 1 ]; then case "$out" in *non-ascii*) return 0 ;; esac; fi
+  echo "  expected non-ascii failure, got $got: $out" >&2
+  return 1
+}
+
 run_case "ascii script passes" assert_exit 0 bash "$C" "$F/good.sh"
 run_case "bom fails" assert_exit 1 bash "$C" "$F/bom.sh"
 run_case "bom message" assert_output_contains "bom.sh:1: bom" bash "$C" "$F/bom.sh"
@@ -37,5 +52,7 @@ run_case "unicode in markdown passes" assert_exit 0 bash "$C" "$F/unicode.md"
 run_case "em dash in markdown fails" assert_output_contains "emdash.md:3: em-dash" bash "$C" "$F/emdash.md"
 run_case "invalid utf8 fails" assert_output_contains "badutf8.md:3: utf8" bash "$C" "$F/badutf8.md"
 run_case "ignored paths are skipped" ignored_case
+
+run_case "non-ascii path is checked" nonascii_path_case
 
 exit "$rc"

@@ -39,24 +39,32 @@ is_doc() {
 
 utf8_re='^([\x00-\x7F]|[\xC2-\xDF][\x80-\xBF]|\xE0[\xA0-\xBF][\x80-\xBF]|[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}|\xED[\x80-\x9F][\x80-\xBF]|\xF0[\x90-\xBF][\x80-\xBF]{2}|[\xF1-\xF3][\x80-\xBF]{3}|\xF4[\x80-\x8F][\x80-\xBF]{2})*$'
 
+# scan <grep opts> <pattern> <file>: print matching line numbers; status 2 on grep error.
+scan() {
+  local o
+  o="$(grep "$@")"; local s=$?
+  [ "$s" -ge 2 ] && return 2
+  printf '%s\n' "$o" | cut -d: -f1
+}
+
 check_file() {
   local f="$1" out
-  [ -f "$f" ] || return 0
+  [ -f "$f" ] || { echo "FAIL $f: read-error"; fail=1; return 0; }
   # Skip binary files (NUL byte present).
   if [ -s "$f" ] && [ "$(tr -d '\000' < "$f" | wc -c)" -ne "$(wc -c < "$f")" ]; then return 0; fi
   if [ "$(head -c 3 "$f" | od -An -tx1 | tr -d ' \n')" = "efbbbf" ]; then
     echo "FAIL $f:1: bom"; fail=1
   fi
-  out="$(grep -nvP "$utf8_re" "$f" | cut -d: -f1)"
+  out="$(scan -nvP "$utf8_re" "$f")" || { echo "FAIL $f: read-error"; fail=1; return 0; }
   if [ -n "$out" ]; then
     while IFS= read -r n; do echo "FAIL $f:$n: utf8"; done <<< "$out"; fail=1
   fi
-  out="$(grep -nP '\xE2\x80\x94' "$f" | cut -d: -f1)"
+  out="$(scan -nP '\xE2\x80\x94' "$f")" || { echo "FAIL $f: read-error"; fail=1; return 0; }
   if [ -n "$out" ]; then
     while IFS= read -r n; do echo "FAIL $f:$n: em-dash"; done <<< "$out"; fail=1
   fi
   if ! is_doc "$f"; then
-    out="$(grep -nP '[\x80-\xFF]' "$f" | cut -d: -f1)"
+    out="$(scan -nP '[\x80-\xFF]' "$f")" || { echo "FAIL $f: read-error"; fail=1; return 0; }
     if [ -n "$out" ]; then
       while IFS= read -r n; do echo "FAIL $f:$n: non-ascii"; done <<< "$out"; fail=1
     fi
@@ -65,10 +73,10 @@ check_file() {
 
 if [ "$#" -eq 0 ]; then
   cd "$root" || exit 1
-  while IFS= read -r f; do
+  while IFS= read -r -d '' f; do
     matches_any "$f" "$ignore_globs" && continue
     check_file "$f"
-  done < <(git ls-files)
+  done < <(git ls-files -z)
 else
   for p in "$@"; do
     if [ -d "$p" ]; then
