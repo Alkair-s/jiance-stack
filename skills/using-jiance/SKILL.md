@@ -23,6 +23,8 @@ both in this plugin. A project's own files override them where they speak.
 
 - Before non-trivial work: anything that creates or changes behaviour, touches more than one file, needs a
   plan, debugs a failure, reviews code, or claims that work is done.
+- Before any edit to a code, style or config file, even a one-line value change: load `jiance-stack:testing`
+  first. It decides whether the change gets a test or a recorded substitute; a small edit still needs one.
 - Not before every reply. A quick factual answer, a one-line clarification or reading a file the owner pointed
   at needs no skill.
 - Load a skill with the Skill tool, by its full name, for example `jiance-stack:change-request`. Say which skill
@@ -62,7 +64,7 @@ If you cannot tell which area applies, ask the owner one short question.
 | Approved plan with independent tasks for subagents | `jiance-stack:subagent-driven-development` |
 | Work that needs an isolated branch or checkout | `jiance-stack:using-git-worktrees` |
 | Work done, tests pass, decide how to integrate the branch | `jiance-stack:finishing-a-development-branch` |
-| Writing or changing code that needs tests | `jiance-stack:testing` |
+| Any change to code, styles or config, even one line (it decides: test or recorded substitute) | `jiance-stack:testing` |
 | About to add a helper, wrapper or utility not named in the plan | `jiance-stack:helper-gate` |
 | Before committing a change: what else can it break | `jiance-stack:blast-radius` |
 | Risky or contested change, "are we sure?" | `jiance-stack:interrogate` |
@@ -102,6 +104,7 @@ going on reversible work.
 - Report real command output, never claims.
 - Keep changes minimal. No features, options or abstractions that were not asked for.
 - Every new feature gets tests; a bad test is replaced on purpose by a recorded substitute with a written reason.
+  Load `jiance-stack:testing` before the first edit of any change, however small.
 
 ## Not shipped yet (stage 2)
 
