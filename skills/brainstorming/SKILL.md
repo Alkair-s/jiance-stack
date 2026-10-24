@@ -94,7 +94,10 @@ That's the whole message.
 ## The Conversation
 
 Each message ends with one question: a single sentence with no list of
-example answers hanging off it. One question means one: do not join two with "and". Use plain language, pitched just a little
+example answers hanging off it. One question means one: do not join two
+with "and".
+
+Use plain language, pitched just a little
 above where your human partner is. Match their vocabulary; never use
 process jargon. You never need to quote this skill to your human
 partner.
