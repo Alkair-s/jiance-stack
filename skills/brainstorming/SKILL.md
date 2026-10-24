@@ -83,7 +83,8 @@ brainstorming:
   conversation.
 - **They didn't:** they may not want a conversation at all. After your
   question, add a light, one-line offer to just get going instead, like
-  "Or if you'd rather I just dive in, say so." If they take you up on
+  "Or if you'd rather I just dive in, say so." The offer names no platform,
+  language or format; those come only after they opt out. If they take you up on
   it, this skill is done: state any significant how-it-gets-made choice
   (platform, language, medium) in one plain line, then do what they
   asked through the normal workflow.
@@ -240,20 +241,8 @@ human partner's preferences override both (rule precedence: see
 `../../config/models.md`. When you tell your human
 partner you're writing it up, say a reviewer will read it first and you
 may come back once with a few questions. Don't hand over the document
-until the check is back. Sort what the builder asks into three piles:
+until the check is back. Sort what the builder asks as `builder-check-prompt.md` describes under "Handling the answer".
 
-- **Answered already** by the conversation or the project: put the answer
-  in the document.
-- **Minor:** a sensible builder could settle it without changing what gets
-  built. Settle it yourself and mark it in the document as your call.
-- **Theirs:** only your human partner can answer it, and the answer changes
-  what gets built.
-
-Bring the "theirs" pile in one message, most important first. Update the
-document with their answers, then hand it over with a short list of the
-calls you made so they can check those while reading. That's the only
-round of questions the check produces. Without a subagent tool, read the
-document as that builder yourself.
 
 <HARD-GATE>
 Nothing gets built until your human partner approves the design doc (this is
@@ -297,12 +286,9 @@ else in it:
 
 If they decline, stay in text and don't offer again unless they raise it.
 
-**Per question, ask: would they understand this better by seeing it?**
-Mockups, layouts, diagrams, and side-by-side designs go in the browser.
-Requirements, scope, tradeoffs, and conceptual choices stay in text. A
-question about a UI topic isn't automatically a visual question.
+Decide per question whether seeing beats reading; `visual-companion.md`
+("When to Use") has the test.
 
 If they accept, read `visual-companion.md` in this directory before
-starting the server. It needs Node.js; check with `node --version` before
-offering it, and if Node is missing, stay in text (describe layouts in words
-or ASCII sketches) and do not install anything.
+starting the server. It needs Node.js (see its first lines for the
+text fallback).
