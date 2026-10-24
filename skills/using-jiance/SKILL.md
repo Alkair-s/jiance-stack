@@ -43,8 +43,9 @@ conversation. Do not write or edit code until the owner has confirmed what they 
 1. **Existing project.** The repo already has code. Run `jiance-stack:onboard-project` at the first project
    task of a session (a fix, a feature, a review, even a commit message) to map its rules, then use
    `jiance-stack:change-request` for every fix, feature or new test. Where the project's rules and a default
-   disagree, follow the project and say so once, in one sentence that names the project's rule and the
-   jiance-stack default it replaces (for example a commit format instead of Conventional Commits).
+   disagree, follow the project and mention it once per session, naming the project's rule and the
+   jiance-stack default it replaces (for example a commit format instead of Conventional Commits): the role
+   map's `replaces P<n>` cell counts as that mention; a conflict that first comes up later gets one sentence.
 2. **New project from scratch.** An empty or nearly empty repo, or a planning brief to turn into a project.
    The new-project skills (planning-brief, import-brief, run-milestone and the rest) are stage 2 and not
    shipped yet (see below). For now, use `jiance-stack:brainstorming`,

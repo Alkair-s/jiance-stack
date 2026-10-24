@@ -70,6 +70,9 @@ Rules while writing:
   question, not as a decision.
 - **Do not change code** and do not edit the existing rule files. The new router points to them ("Development
   rules: README.md, section Development").
+- **A router under another name stays.** If the project already has one (`AGENTS.md`, `GEMINI.md`,
+  `.github/copilot-instructions.md`), never rename, move or merge it. Propose a short root `CLAUDE.md` that
+  links to it, and write it only after the owner says yes to that specific file.
 - **The router stays short.** It routes; details go in module files and contracts. Count the lines.
 
 ## Step 3: the owner reviews everything before commit

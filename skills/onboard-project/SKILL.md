@@ -76,8 +76,9 @@ This table is the interface other skills read (`jiance-stack:evaluate-principles
   (`README.md` "Development"). `none` when no file plays the role.
 - **Notes:** the rules from that file you will follow, in a few words each, or which default covers a
   `none` row (`defaults P13 apply`). Compare every filled row with `../../principles/defaults.md` to find
-  the conflicts. Write a conflict as `replaces P<n>` in its Notes cell, unless the same reply already states
-  it in a sentence: the owner hears about each conflict once per session, not twice in one reply.
+  the conflicts. Write each one in its Notes cell as `replaces P<n>` and the default it sets aside
+  (`files up to 600 lines; replaces P14 (300 lines)`). That cell is the one mention of the conflict: do not
+  repeat it in the text around the table or later in the session.
 
 Example for a partial project:
 
@@ -103,11 +104,13 @@ owner asks you to keep it.
 
 ## Following the rules after onboarding
 
-- **Project wins.** Where a project file and a jiance-stack default disagree, the project's convention wins.
-  Say so once, at the point where it first matters, in one sentence that names the project's rule and the
-  default it replaces: "STYLE.md allows files up to 600 lines, so I keep `parser.go` whole instead of
+- **Project wins.** Where a project file and a jiance-stack default disagree, the project's convention wins,
+  and the owner hears about it once per session. When the conflict is in the role map you reported, its
+  `replaces P<n>` cell is that mention; do not say it again. When a conflict first comes up later, or was
+  not in the table, say it once, where it first matters, in one sentence that names the project's rule and
+  the default it replaces: "STYLE.md allows files up to 600 lines, so I keep `parser.go` whole instead of
   splitting it at the default 300 (P14)." Name the default. "This follows STYLE.md" alone does not tell the
-  owner that a default was set aside. Do not repeat it later in the session.
+  owner that a default was set aside.
 - **Rules apply to everything you produce,** not just code: commit messages, changelog lines, branch names,
   file layout, test style. Before writing one of those, check the map for the row that governs it.
 - **Defaults fill gaps only.** A `none` row means the default applies. A filled row means the default for that
@@ -122,7 +125,8 @@ user-visible change gets a CHANGELOG entry". Then append the new entry in the fi
 place, and touch nothing else in the file.
 
 One more append is pre-authorized: the written reason for a test substitute (`jiance-stack:testing`,
-"Substitutes"), in the test checklist or progress file.
+"Substitutes"), in the test checklist or progress file. When the project has neither, put the reason in the
+plan or the commit message and tell the owner where it went; do not create a file for it.
 
 Every other edit to a rule file (rewording, reformatting, fixing a stale command, adding a section) is an
 approval point: propose the exact change in your reply and wait.
@@ -133,9 +137,9 @@ approval point: propose the exact change in your reply and wait.
   its rules. Nothing is written into the project to record the decline.
 - Record the decline in Claude Code auto-memory, one line: the project, the date, "owner declined
   jiance-stack structure; do not offer again". Memory is not a project file.
-- If auto-memory is off or not writable, do not offer again in this session, and in a later session ask at most
-  once, in one line ("Want the jiance-stack structure here? You said no last time; I'll not ask again this
-  session.").
+- If auto-memory is off or not writable, a decline cannot be remembered. Then make the offer at most once per
+  session, in one line ("Want the jiance-stack structure here: router CLAUDE.md, contracts, decisions,
+  progress?"), and never again in that session after the owner declines or does not answer.
 
 ## Common mistakes
 
@@ -146,4 +150,4 @@ approval point: propose the exact change in your reply and wait.
 | Offering the full structure on a partial project | Offer only the missing roles |
 | Offering structure on a structured project because a role is empty | Note the `none` row and the default that covers it |
 | Following the default commit format because the project's rule is in another file | Check the map before writing a commit message |
-| Mentioning the same conflict in every reply | Once, where it first matters |
+| Mentioning the same conflict in every reply | Once per session: the map's `replaces P<n>` cell, or one sentence when it first comes up later |
