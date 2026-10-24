@@ -119,8 +119,8 @@ ok      example.com/units/sizes 0.005s
 
 ## Substitute instead of a bad test
 
-Change: the page heading font size in a stylesheet. A test asserting the CSS value only repeats the source (a change
-detector) and there is no visual test harness, so the check is a checklist item. Recorded in
+Change: the page heading font size in a stylesheet. A test asserting the CSS value only repeats the source (it mirrors
+the implementation) and there is no visual test harness, so the check is a checklist item. Recorded in
 `docs/test-checklist.md`:
 
 ```markdown
@@ -128,5 +128,5 @@ detector) and there is no visual test harness, so the check is a checklist item.
   Why manual: an automated test would only repeat the CSS value; no visual test harness in this project.
 ```
 
-Reply line: "No automated test: a font size is a decision, not behaviour. Substitute: checklist item in
+Reply line: "No automated test: a test of the CSS value would only mirror the source. Substitute: checklist item in
 docs/test-checklist.md, with the reason written there."

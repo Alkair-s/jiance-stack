@@ -14,9 +14,11 @@ a passing run after.
 
 **Core principle:** if you did not watch the test fail, you do not know that it tests the right thing.
 
-This applies to every change, even one line. A style, copy or config edit that no sensible test covers still
-gets its recorded substitute, with the reason appended to the project's test checklist or progress log before
-you reply (see "Substitutes"); "too small to check" is not a reason.
+**Scope.** The rule applies to every change that adds or alters observable behaviour: features, bug fixes and
+behaviour tweaks, even one line (a colour change alters what the user sees). Such a change that no sensible test
+covers still gets its recorded substitute and written reason (see "Substitutes"); "too small to check" is not a
+reason. A refactor, rename or config change with no behaviour change needs no new test, only the existing suite
+green, run and quoted.
 
 ## The rule
 
@@ -55,7 +57,8 @@ Do these in order, for each behaviour.
 4. **Run the closest real check** (see "Substitutes"), or say it is not run and why.
 5. **Record the substitute and its reason.** Append one item to the project's test checklist or progress log
    (plan or commit message if neither exists): what is checked, how, and why an automated test would be a bad
-   test here. This append is pre-authorized. Do it before you report done; the change is not done without it.
+   test here. The append is pre-authorized (an explicit owner limit on files wins; see "Substitutes"). Do it
+   before you report done; the change is not done without it.
 6. **Report** the substitute, the check's result and where the reason is written.
 
 Wrote production code before the test? Set it aside, write the test, watch it fail against the code without
@@ -82,13 +85,10 @@ Some sessions have no shell tool, or the toolchain is missing. Then:
 A test is a bad test when it mostly:
 
 - tests mocks instead of the real code (asserts that a mock was called, not what the code produced);
-- mirrors the implementation (the expected value is computed by the same code or its helpers, or the test
-  checks private structure that only a redesign would change);
-- pins a decision instead of a behaviour (a constant, a colour value, exact wording, a style property): it fires
-  on every intentional change and never on a bug;
-- depends on timing, ordering or global state (sleeps, wall clock, shared files, network);
-- needs expensive setup for a small change (a full browser harness, production-only state, large fixture churn);
-- would be deleted right after it proved the fix.
+- mirrors the implementation (the expected value is computed by the same code or its helpers, the test checks
+  private structure, or it only repeats a value from the source, such as asserting a colour in a stylesheet);
+- depends on timing or global state (sleeps, wall clock, ordering, shared files, network);
+- needs expensive setup for a small change (a full browser harness, production-only state, large fixture churn).
 
 Prefer no new automated test over a bad one. Never write a bad test just to satisfy this rule.
 
@@ -109,10 +109,11 @@ For every substitute, before you reply:
    checklist (`docs/test-checklist.md` or the project's equivalent) when one exists. Add one item that says what
    is checked, how, and why an automated test would be a bad test here. Append only; never rewrite existing
    entries. A reason given only in your reply does not count.
-2. **This append is pre-authorized.** Writing a substitute's reason is part of the owner's testing rule, so it
-   is not an "edit to the project's own docs" that needs approval. Do not ask; do it. The record is part of
-   the change itself: "this is the whole change", "only touch this file" or "no questions" still include it.
-   Search for the file first (Glob for `*checklist*`, `*progress*`, `PROGRESS*`, `docs/`).
+2. **This append is pre-authorized against the doc-edit approval point only.** Writing a substitute's reason
+   is part of the owner's testing rule, so it is not an "edit to the project's own docs" that needs approval:
+   do not ask, do it. Search for the file first (Glob for `*checklist*`, `*progress*`, `PROGRESS*`, `docs/`).
+   An explicit owner restriction wins by precedence: if the owner said "only touch this file" or similar, do
+   not append; put the reason in your reply and in the commit message, and say that is where it went.
 3. If neither a progress log nor a test checklist exists, put the reason in the plan or in the change's commit
    message, and tell the owner where it went.
 4. Say in your reply that you used a substitute, which one, and where the reason is written.
@@ -121,7 +122,7 @@ Example checklist item for a style change:
 
 ```markdown
 - [ ] Footer links show #0B6E4F on the home page (open the page, inspect a footer link).
-  Why manual: an automated test would only repeat the CSS value (a change detector); no visual test harness.
+  Why manual: an automated test would only repeat the CSS value (it mirrors the implementation); no visual test harness.
 ```
 
 ## Evidence report
