@@ -40,8 +40,11 @@ conversation. Do not write or edit code until the owner has confirmed what they 
 
 ## Pick the area
 
-1. **Existing project.** The repo already has code. Run `jiance-stack:onboard-project` once per project to map
-   its rules, then use `jiance-stack:change-request` for every fix, feature or new test.
+1. **Existing project.** The repo already has code. Run `jiance-stack:onboard-project` at the first project
+   task of a session (a fix, a feature, a review, even a commit message) to map its rules, then use
+   `jiance-stack:change-request` for every fix, feature or new test. Where the project's rules and a default
+   disagree, follow the project and say so once, in one sentence that names the project's rule and the
+   jiance-stack default it replaces (for example a commit format instead of Conventional Commits).
 2. **New project from scratch.** An empty or nearly empty repo, or a planning brief to turn into a project.
    The new-project skills (planning-brief, import-brief, run-milestone and the rest) are stage 2 and not
    shipped yet (see below). For now, use `jiance-stack:brainstorming`,
@@ -55,8 +58,8 @@ If you cannot tell which area applies, ask the owner one short question.
 
 | Request type | First skill |
 |---|---|
-| First session on an existing codebase | `jiance-stack:onboard-project` |
-| Existing project has no structure (no CLAUDE.md, contracts or decision log) | `jiance-stack:setup-structure` |
+| First project task of a session on an existing codebase, even a commit message | `jiance-stack:onboard-project` |
+| Owner said yes to adding the structure (router CLAUDE.md, contracts, decisions, progress) | `jiance-stack:setup-structure` |
 | Fix, feature, flag, option or new tests on an existing project | `jiance-stack:change-request` |
 | Create or change behaviour, design an idea, "let's build X" | `jiance-stack:brainstorming` |
 | Agreed spec or design that needs a step-by-step plan | `jiance-stack:writing-plans` |

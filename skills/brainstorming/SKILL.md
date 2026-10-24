@@ -47,7 +47,7 @@ parts work today and what this change would touch. Never ask what the
 project or their context already answers.
 
 On an existing project, start with the files `jiance-stack:onboard-project`
-mapped (its project map and notes). Read those first, then only the code they
+mapped (its role map and notes). Read those first, then only the code they
 point to. If the project has not been mapped yet, say so and offer to run
 `jiance-stack:onboard-project` before you go on.
 

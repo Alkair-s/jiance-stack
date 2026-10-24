@@ -19,8 +19,9 @@ goes in the answer, not in the file.
 
 ## Inputs
 
-1. **The principle files.** Use the map from `jiance-stack:onboard-project` when it ran in this session or its
-   map is on record (for example "their CONTRIBUTING.md plays the principles role"). When there is no map, find
+1. **The principle files.** Use the role map from `jiance-stack:onboard-project` when it ran in this session or
+   the owner kept it in memory: its `Role | File(s) | Notes` table, where the router, contract, decisions and
+   principles rows name the rule files (for example `principles | CONTRIBUTING.md`). When there is no map, find
    them yourself: `CLAUDE.md` at the root and in modules, `CONTRIBUTING.md`, `AGENTS.md`, `docs/principles*`,
    decision logs (`DECISIONS.md`, `docs/adr/`), contracts, style guides, linter configs that encode a rule.
    Say in the answer that you found them yourself and list which files you treated as rules.
