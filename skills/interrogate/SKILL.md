@@ -51,8 +51,9 @@ An omitted `model` silently inherits the session's model, so always set it. If t
 alias, say so and run that reviewer on the session default.
 
 **Dispatch.** Launch all reviewers in a single message with the Agent tool, labeled Reviewer A, B, and so on.
-Each reviewer gets `subagent_type: Explore` (read-only) and its `model`. Reviewing the angles inline yourself is not
-interrogate (see the top of this skill).
+Each reviewer gets `subagent_type: general-purpose`, not `Explore`: reviewers must read whole files and search
+again, and Explore reads only excerpts. Each also gets its `model`; the prompt keeps it read-only. Reviewing the
+angles inline yourself is not interrogate (see the top of this skill).
 
 Read `references/reviewer-prompt.md` and fill in the same template for every reviewer with the stated intent, the
 reviewer's angle, the diff or file contents, the rubric from `references/rubric.md`, and the code-quality lens. The
