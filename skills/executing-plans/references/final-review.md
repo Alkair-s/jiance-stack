@@ -1,12 +1,17 @@
 # Final Review and Finish (inline execution)
 
+> Adapted from obra/superpowers `skills/executing-plans/SKILL.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Part of jiance-stack:executing-plans. Every task has a ledger completion line.
 Paths: all relative paths in this file are relative to this file (`skills/executing-plans/references`).
-
 
 Run `../../subagent-driven-development/scripts/review-package PLAN_FILE MERGE_BASE HEAD`
 (MERGE_BASE = the commit the branch started from, e.g.
 `git merge-base main HEAD`) and review from the file it prints.
+
+**Invoking this skill is asking for subagents.** Choosing inline execution at the plan handoff still asks for
+the final-reviewer subagent below. A standing rule to spawn subagents only when the user asks is met by that
+request. Dispatch it when the Agent tool is available; do not replace it with your own read and do not ask first.
 
 **With a subagent tool:** dispatch the reviewer with the Agent tool (`subagent_type: general-purpose`) on the
 `final-reviewer` role of `../../../config/models.md` (a project's `CLAUDE.md` `## Models` section overrides it) -
@@ -49,12 +54,12 @@ because the spec was silent has graded the spec, not the effect. Then:
   conflict, not a note that you declined a polish suggestion.
 
 Fix the Critical and Important findings yourself - you are the
-implementer here - in ONE pass. Each fix is verified by a failing-before test, not by a
-second reviewer: write the test that reproduces the finding, watch it
-fail, make it pass, then run the whole suite. Record each in the ledger as
-`Final: fixed <finding> - <test name> RED->GREEN, suite <N>/<N>`. A fix
-without a test that failed first is not verified; a suite that is not
-green after the pass means the pass is not over. Do not dispatch a
+implementer here - in ONE pass. Each fix is verified by tests, not by a second reviewer, and follows
+`jiance-stack:testing`: a behaviour fix gets its failing-before test (write it, watch it fail, make it pass) or a
+recorded substitute with its written reason, never a bad test; a fix with no behaviour change (docs, a refactor)
+needs only the existing suite green. Then run the whole suite. Record each in the ledger as
+`Final: fixed <finding> - <test name> RED->GREEN | <substitute> | no behaviour change, suite <N>/<N>`. A suite
+that is not green after the pass means the pass is not over. Do not dispatch a
 re-review: it would re-read a diff whose covering tests already answer
 "addressed" and whose suite run already answers "broke nothing".
 
@@ -63,9 +68,10 @@ A finding you decide not to fix is a ruling - `Final: Ruling: <finding> -
 in the rulings list. There is no second fix pass.
 
 **Approval points stay out of the fix pass.** A finding that a task passed an approval point without the owner's
-OK is never fixed or ruled by you. Ledger `Approval: <point> - asked`, put it first in your final message and
-wait for the owner (see "Not for the breaker" in ../../subagent-driven-development/references/fix-loop.md). An
-unlisted, ungated helper goes back through `jiance-stack:helper-gate` before the fix pass.
+OK, and every security finding, is never fixed or ruled by you: it goes to the owner before any fix. Ledger
+`Approval: <point> - asked`, put it first in your final message and wait for the owner (see "Not for the breaker"
+in ../../subagent-driven-development/references/fix-loop.md). An unlisted, ungated helper goes back through
+`jiance-stack:helper-gate` before the fix pass.
 
 ## Finish
 

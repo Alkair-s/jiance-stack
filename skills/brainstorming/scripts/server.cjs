@@ -1,3 +1,4 @@
+// Adapted from obra/superpowers `skills/brainstorming/scripts/server.cjs` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
 const crypto = require('crypto');
 const http = require('http');
 const fs = require('fs');

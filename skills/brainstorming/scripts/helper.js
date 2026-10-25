@@ -1,3 +1,4 @@
+// Adapted from obra/superpowers `skills/brainstorming/scripts/helper.js` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
 (function() {
   const MIN_RECONNECT_MS = 500;
   const MAX_RECONNECT_MS = 30000;

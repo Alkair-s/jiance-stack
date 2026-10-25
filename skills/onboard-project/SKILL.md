@@ -9,8 +9,8 @@ Find the files where an existing project keeps its rules, map each one to a jian
 and from then on follow those files as the project's rules. You are a reader here, not an editor.
 
 Run it at the start of the first project task in a session: "get your bearings", a fix, a feature, a review, even
-a commit message or a changelog line. It is cheap: list the tree, read the rule files, report. Skip it when this
-session already produced the map.
+a commit message or a changelog line. It is cheap: list the top level, glob for the rule files, read them,
+report. Skip it when this session already produced the map.
 
 ## The rule that comes first
 
@@ -21,10 +21,20 @@ to an offer you made in your reply.
 
 ## Step 1: look
 
-List the tree (Glob `**/*`) and read every file that can hold a rule. Never classify a file you have not opened
-(P12 in `../../principles/defaults.md`). A section counts as a file: a README "Development" section is a rule
-file even though the rest of the README is usage text. One file can play several roles, and one role can have
-several files.
+Do not list the whole tree: on a real repository (build output, `node_modules`, vendored code) a `**/*` listing
+floods the context and gets truncated. Instead:
+
+1. List the top level once (`ls -a`, or Glob `*` and `*/*` without a shell) to see folders such as `docs/`,
+   `.github/` and `.cursor/`.
+2. Run targeted globs for the rule-file roles: `CLAUDE.md`, `*/CLAUDE.md`, `AGENTS.md`, `CONTRIBUTING*`, `STYLE*`,
+   `README*`, `CHANGELOG*`, `PROGRESS*`, `DECISIONS*`, `docs/adr/**`, `docs/**/contracts/*`, `**/*contract*.md`,
+   `TEST*CHECKLIST*` and `.editorconfig`, plus any other name in the table below that the top level suggests.
+3. Widen the search (deeper or other names) only if the map still has gaps, and say so when a result was
+   truncated.
+
+Read every file found that can hold a rule. Never classify a file you have not opened (P12 in
+`../../principles/defaults.md`). A section counts as a file: a README "Development" section is a rule file even
+though the rest of the README is usage text. One file can play several roles, and one role can have several files.
 
 | Role | What it does | Typical names, and how to recognise it in other formats |
 |---|---|---|

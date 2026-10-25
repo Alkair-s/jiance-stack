@@ -1,5 +1,7 @@
 # Resuming From an Existing Ledger
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/references/resuming.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Part of jiance-stack:subagent-driven-development. This plan's workspace
 already has a ledger at `<workspace>/progress.md`.
 

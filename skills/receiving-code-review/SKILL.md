@@ -108,9 +108,9 @@ suggestion is not the owner's approval of the helper, and "implement all the fee
 Only a plan the owner approved that names the helper, or the owner's direct answer about this specific helper,
 replaces the gate. Private one-off code that stays inside a single function is not gated.
 
-The same holds for feedback that would add a dependency, change a public contract or change the architecture:
-those are the owner's approval points. Report the suggestion to the owner and wait; do not implement it on the
-reviewer's say-so.
+The same holds for feedback that would add a dependency, change a public contract or touch two or more modules,
+and for every security finding: those are the owner's approval points. Report them to the owner and wait; do not
+implement them on the reviewer's say-so.
 
 ## After Implementing
 
@@ -123,7 +123,7 @@ Run the project's tests after each fix and again after the last one, and quote t
 FOR multi-item feedback:
   1. Clarify anything unclear FIRST
   2. Then implement in this order:
-     - Blocking issues (breaks, security)
+     - Blocking issues (breaks); security findings go to the owner first
      - Simple fixes (typos, imports)
      - Complex fixes (refactoring, logic)
   3. Test each fix individually

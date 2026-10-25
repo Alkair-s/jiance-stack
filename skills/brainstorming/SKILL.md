@@ -244,8 +244,10 @@ human partner's preferences override both (rule precedence: see
 `../../config/models.md`. When you tell your human
 partner you're writing it up, say a reviewer will read it first and you
 may come back once with a few questions. Don't hand over the document
-until the check is back. Sort what the builder asks as `builder-check-prompt.md` describes under "Handling the answer".
-
+until the check is back. Sort what the builder asks as `builder-check-prompt.md` describes under
+"Handling the answer". **Invoking this skill is asking for subagents:** for a project, it is the explicit
+request for the builder-check subagent, which meets a standing rule to spawn subagents only when the user asks.
+Spawn it; do not run the check inline and do not ask first.
 
 <HARD-GATE>
 Nothing gets built until your human partner approves the design doc (this is

@@ -1,5 +1,7 @@
 # Implementer Subagent Prompt Template
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/implementer-prompt.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Use this template when dispatching an implementer subagent.
 
 ```

@@ -1,5 +1,7 @@
 # Final Review and Finish
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/references/final-review.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Part of jiance-stack:subagent-driven-development. Every task in the plan is
 complete.
 
@@ -36,10 +38,10 @@ residual load-bearing findings surface to your human partner when
 finishing-a-development-branch presents the options.
 
 **Approval points stay out of the fix wave.** A finding that a task passed an approval point (new dependency,
-public contract change, two or more modules, edit to the project's own docs) without the owner's OK goes to the
-owner. The fix subagent does not fix it and you do not rule on it; ledger `Approval: <point> - asked` and wait
-for the answer (see "Not for the breaker" in fix-loop.md). An unlisted, ungated helper goes back through
-`jiance-stack:helper-gate` first.
+public contract change, two or more modules, edit to the project's own docs) without the owner's OK, and every
+security finding, goes to the owner before any fix. The fix subagent does not fix it and you do not rule
+on it; ledger `Approval: <point> - asked` and wait for the answer (see "Not for the breaker" in fix-loop.md).
+An unlisted, ungated helper goes back through `jiance-stack:helper-gate` first.
 
 ### Finish
 

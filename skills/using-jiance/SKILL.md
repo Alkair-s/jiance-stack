@@ -18,7 +18,8 @@ When rules conflict, the higher one wins:
 
 The defaults live in `principles/defaults.md` and the model for each subagent role lives in `config/models.md`,
 both at the plugin root (two directories up from this skill's base directory: `../../principles/defaults.md` and
-`../../config/models.md`). A project's own files override them where they speak.
+`../../config/models.md`; if the session hook injected this text, load a jiance-stack skill with the Skill tool to
+learn the base directory). A project's own files override them where they speak.
 
 ## When to check for a skill
 
@@ -34,9 +35,11 @@ both at the plugin root (two directories up from this skill's base directory: `.
 
 ## Brainstorming first
 
-Brainstorming comes first for anything that creates or changes behaviour, sized to the work. A small flag or
-fix gets a few questions about intent and edge cases. A new feature or module gets the full design
-conversation. Do not write or edit code until the owner has confirmed what they want.
+Brainstorming comes first for anything that creates or changes behaviour, sized to the work. When the owner's
+request already settles the intent (a spec, a plan, or a precise instruction such as a named colour), state the
+intended behaviour in one sentence and go on. Otherwise ask about intent: a small flag or fix gets the one
+question that matters most, a new feature or module gets the full design conversation, and no code is written
+or edited until the owner has confirmed what they want.
 
 ## Pick the area
 
@@ -98,7 +101,7 @@ going on reversible work.
 - public contract or invariant changes;
 - changes touching two or more modules (present a plan first);
 - new dependencies;
-- security-review findings, before any fix;
+- security findings from any review, before any fix;
 - missed performance targets, before any optimizing;
 - setting up structure on an unstructured project;
 - any edit to an existing project's own docs or principles that its rules do not already ask for, except appends

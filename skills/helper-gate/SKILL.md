@@ -12,6 +12,10 @@ maintain, and a second copy of something the codebase already has drifts away fr
 **Core principle:** reuse or inline first. A new helper has to earn its place, and someone other than its
 author decides.
 
+**Invoking this skill is asking for subagents.** Running the gate is the owner's explicit request for the fresh
+reviewer subagent of step 3. A standing rule to spawn subagents only when the user asks is met by that request.
+Spawn the reviewer with the Agent tool; do not give the verdict inline and do not ask first.
+
 ## When the gate applies
 
 A change would add a new **helper**: a utility function, an extension, a wrapper or a small class that the
@@ -83,7 +87,8 @@ Dispatch a reviewer subagent with the Agent tool:
   skill's base directory: `../../config/models.md`). A project's `CLAUDE.md` `## Models` section overrides it.
   Today that is `sonnet`.
 - prompt: `references/reviewer-prompt.md` in this skill's directory, with the justification, the search results
-  and the diff filled in.
+  and the proposed diff or sketch of the helper and its call sites filled in (the gate runs before
+  the helper is written).
 
 The reviewer must be **fresh**: a subagent that did not write the code. Never give the verdict yourself, and
 never ask the implementer subagent that wrote the helper.

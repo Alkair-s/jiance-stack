@@ -9,6 +9,10 @@ description: "Use for \"how does X work\", code walkthroughs before changing som
 
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
+**Invoking this skill is asking for subagents.** When the owner asks how something works and this skill runs, the
+owner is explicitly asking for its explorer and explainer subagents. A standing rule to spawn subagents only when
+the user asks is met by that request. Spawn them; do not explore inline instead, and do not ask first.
+
 Every spawn uses the Agent tool with `subagent_type: Explore`, which is read-only. Set `model` from
 `../../config/models.md`: explorers use the `explorer` role, and every explainer uses the `explainer` role. An omitted
 `model` silently inherits the session's model, and `haiku` is never allowed. If the Agent tool rejects a model alias, say so and

@@ -12,6 +12,10 @@ for evaluation, never your session's history.
 
 **Core principle:** Review early, review often.
 
+**Invoking this skill is asking for subagents.** When this skill runs, the owner (or the workflow that called it)
+is explicitly asking for the code reviewer subagent. A standing rule to spawn subagents only when the user asks
+is met by that request. Dispatch the reviewer; do not review inline instead, and do not ask first.
+
 ## When to Request Review
 
 **Mandatory:**
@@ -51,16 +55,17 @@ Use the Agent tool with `subagent_type: general-purpose` and fill the template a
 - `[HEAD_SHA]` - Ending commit
 
 The reviewer also checks the two jiance-stack gates, so give it what it needs: the plan's list of approved new
-helpers, and which steps the plan marked as approval points (a new dependency, a public contract change, an
-architecture change). A new helper that is not on the list and did not pass `jiance-stack:helper-gate` is an
-Important finding. An approval point that was passed without the owner's OK is Critical.
+helpers, and which steps the plan marked as approval points (a new dependency, a public contract change, a
+change touching two or more modules). A new helper that is not on the list and did not pass
+`jiance-stack:helper-gate` is an Important finding. An approval point that was passed without the owner's OK is
+Critical.
 
 **3. Act on feedback** (with `jiance-stack:receiving-code-review`):
-- Fix Critical issues immediately
+- Fix Critical issues immediately, except security findings: those go to the owner before any fix
 - Fix Important issues before proceeding
 - Note Minor issues for later
 - Push back if the reviewer is wrong (with reasoning)
-- Approval points go to the owner. You do not fix or rule on them yourself.
+- Approval points and security findings go to the owner. You do not fix or rule on them yourself.
 
 **4. Verify the fixes** with `jiance-stack:verification-before-completion`: quote the real test output after the
 fix pass. A reviewer's "Ready to merge" is not evidence that the tests pass.

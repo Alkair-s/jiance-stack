@@ -46,9 +46,9 @@ owner's approval points. For those, stop and ask.
 
 **Approval points are not rulings.** "Rulings, not stalls" never overrides the owner's approval points (the list
 is in `jiance-stack:using-jiance`: public contract or invariant changes, two or more modules, new dependencies,
-security-review findings, missed performance targets, structure setup, edits to the project's own docs, helpers
-the reviewer is unsure about). A task the plan marks "Approval point", or that you find hits one, stops at the
-marked step: ask the owner, wait, and ledger their answer as `Approval: <point> - <owner's answer>`. Do not
+security findings from any review, missed performance targets, structure setup, edits to the project's own docs,
+helpers the reviewer is unsure about). A task the plan marks "Approval point", or that you find hits one, stops at
+the marked step: ask the owner, wait, and ledger their answer as `Approval: <point> - <owner's answer>`. Do not
 decide it yourself and do not continue past it. Tasks that do not depend on it may go on while you wait.
 
 **New helpers.** The plan's "New helpers" list per task is the approved set. Any new helper that is NOT in that
@@ -243,7 +243,7 @@ you finish.
 | "Tests should pass, the change was trivial" | "Should" is not evidence. The contract requires the command and its output. |
 | "Subagents are slow and expensive, I'll skip the final review too" | Inline already removed the per-task reviewers. One review of the whole branch is the floor, not the ceiling. |
 | "The reviewer said Minor, so it's Minor" | The label graded the spec's silence. Grade what the person gets. Re-grade, then gate. |
-| "The fix is obvious, no need for a failing test first" | The failing test is the only proof the finding was real and is now gone. Without it you have a diff and a hope. |
+| "The fix is obvious, no need for a failing test first" | A behaviour fix gets its failing-before test or a recorded substitute with its reason, per `jiance-stack:testing`; without either you have a diff and a hope. A fix with no behaviour change needs the suite green, not a bad test. |
 | "I'll fix the minors too while I'm in there" | Every minor you fix is a test, a fix, and a suite run your partner did not ask for. Ledger them; your partner decides. |
 | "The spec/plan already names the dependency, so I can add it" | A new dependency is an approval point. Stop at the marked step and wait for the owner. |
 | "This helper is small, I will skip the gate" | Not listed in the plan means the gate runs first, and the verdict goes in the ledger. |

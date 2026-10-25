@@ -33,6 +33,7 @@ Apply the baseline prompt above, plus these explicit review rules:
    - If you see a path to delete complexity rather than rearrange it, push hard for that path.
 
 1. **Do not let a PR push a file from under 1k lines to over 1k lines without a very strong reason.**
+   - In jiance-stack the project's own file-size rule, or P14 in `../../principles/defaults.md` (about 300 lines), sets the real limit; read 1k here as that limit.
    - Treat this as a strong code-quality smell by default.
    - Prefer extracting helpers, subcomponents, modules, or local abstractions instead of letting a file sprawl past 1000 lines.
    - If the diff crosses that threshold, explicitly ask whether the code should be decomposed first.

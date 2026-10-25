@@ -9,6 +9,11 @@ description: "Use for 'why does X work this way', 'why we picked Y', design rati
 
 Investigate the motivation and intent behind code. The companion `how` skill answers what the code does and how it works. `why` answers what forces led to its shape.
 
+**Invoking this skill is asking for subagents.** When the owner asks why something is the way it is and this skill
+runs, the owner is explicitly asking for its investigator and synthesizer subagents. A standing rule to spawn
+subagents only when the user asks is met by that request. Spawn them; do not investigate inline instead, and do
+not ask first.
+
 Every spawn uses the Agent tool with `subagent_type: general-purpose`. Set `model` from `../../config/models.md`:
 investigators use the `explorer` role and the synthesizer uses the `explainer` role. An omitted `model` silently inherits
 the session's model, and `haiku` is never allowed. If the Agent tool rejects a model alias, say so and continue with

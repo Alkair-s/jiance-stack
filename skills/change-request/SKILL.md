@@ -37,11 +37,12 @@ suite green, run and quoted (`jiance-stack:testing`); in the step 9 report, "Ord
 
 ## Approval points: stop and wait
 
-The approval points of `jiance-stack:using-jiance` hold at every step: public contract or invariant changes;
-changes touching two or more modules (present the plan first); new dependencies; any edit to the project's own
-docs or principles that its rules do not already ask for; new helpers when the reviewer is unsure or the project
-says "always ask". At one of them, show what you would do, stop, and wait for the owner's explicit OK. A general
-"go ahead" on the task does not approve a contract change, a second module or a helper.
+All the approval points of `jiance-stack:using-jiance` hold at every step: public contract or invariant
+changes; changes touching two or more modules (present the plan first); new dependencies; security findings from
+any review, before any fix; missed performance targets, before any optimizing; setting up structure; any edit to
+the project's own docs or principles that its rules do not already ask for; new helpers when the reviewer is
+unsure or the project says "always ask". At one of them, show what you would do, stop, and wait for the owner's
+explicit OK. A general "go ahead" on the task does not approve a contract change, a second module or a helper.
 
 ## The steps
 
@@ -95,8 +96,9 @@ justification, get a **fresh reviewer subagent's** verdict, and log it in your r
 sites, or placed outside the one function that uses it, is a new helper. Only private one-off code inside a
 single function is not gated.
 
-Run the gate when the plan names the helper, before the first line of it is written. If you find during
-implementation that you need a helper the plan did not name, stop there and run the gate before you write it.
+When your own (unapproved) small plan names the helper, run the gate before the first line of it is written. If
+you find during implementation that you need a helper the plan did not name, stop there and run the gate before
+you write it.
 
 ### 6. Implement with the testing rule
 
@@ -110,11 +112,12 @@ and follow its steps.
 - **Bad test: use a recorded substitute.** When an automated test would only repeat a value from the source
   (a colour in a stylesheet), test mocks, depend on timing, or need expensive setup, do not write it. Use the
   closest real check and **append its reason** to the project's test checklist or progress log now, with Edit
-  (pre-authorized; plan or commit message when neither file exists). A substitute without a written reason does
-  not count.
+  (pre-authorized; plan or commit message when neither file exists, and reply plus commit message when the owner
+  restricted which files you may touch). A substitute without a written reason does not count.
 - **No shell.** Still write the test before the code. Say plainly that you could not run it and give the exact
   commands: the one that should fail before the change and pass after it. Write "not run" in the evidence;
-  never invent output.
+  never invent output. Do not dispatch a subagent only to run a command: subagents get the same tools as this
+  session, so it cannot run there either.
 - Keep the change minimal: no options, refactors or features the request did not ask for. Fix the reported
   behaviour only; input that worked before keeps working unless the request or the contract says otherwise.
   Other gaps you notice go in the report as follow-ups, not into this change.
@@ -125,8 +128,9 @@ and follow its steps.
   `jiance-stack:blast-radius` and prove the one fact the change's safety rests on, as far down its ladder as is
   cheap; say where it stopped.
 - **Review.** Tiny: reread the diff against the request. Small and gated: `jiance-stack:requesting-code-review`
-  dispatches a fresh reviewer subagent. Risky or contested changes (security, data loss, concurrency, a
-  contract, the owner asked "are we sure?"): `jiance-stack:interrogate` as well.
+  dispatches one fresh reviewer subagent (one, not one per angle or per file). Risky or contested changes
+  (security, data loss, concurrency, a contract, the owner asked "are we sure?"): `jiance-stack:interrogate` as
+  well.
 - Act on findings with `jiance-stack:receiving-code-review`. A finding that suggests a new helper goes through
   the helper gate (step 5).
 

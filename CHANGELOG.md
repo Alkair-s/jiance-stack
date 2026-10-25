@@ -6,7 +6,7 @@ Stage 1: the existing-project area and the core general skills.
 
 - Plugin and marketplace manifests, MIT license, NOTICE and UPSTREAM.md credits for superpowers, pstack and thermos.
 - Session-start hook (Windows and Unix) that injects the `using-jiance` router and warns when superpowers or
-  pstack is also enabled.
+  pstack is also installed.
 - Existing-project skills: `onboard-project`, `change-request`, `setup-structure`, `helper-gate`,
   `evaluate-principles`, `blast-radius`, `how`, `why`, `teach`.
 - General skills: `brainstorming`, `writing-plans`, `executing-plans`, `subagent-driven-development`, `testing`,

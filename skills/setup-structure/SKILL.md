@@ -52,7 +52,8 @@ rows once replaced. Write in the project's language and examples, not the templa
 | Progress | `PROGRESS.md` | `PROGRESS.md` |
 
 Testing and release docs only where they fit: a short `TEST_CHECKLIST.md` when the project has manual checks
-(UI, hardware, a measured run), a short `BUILD_AND_RELEASE.md` when it has release steps. Skip them otherwise.
+(UI, hardware, a measured run), a short `BUILD_AND_RELEASE.md` when it has release steps. Skip them otherwise. They have no template yet:
+write them freehand and short (one line per check or step: what, how, expected result).
 
 Rules while writing:
 

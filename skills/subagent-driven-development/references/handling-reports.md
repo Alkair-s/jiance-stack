@@ -1,5 +1,7 @@
 # Handling a Report That Isn't DONE
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/references/handling-reports.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Paths: links and `../` paths are relative to this file; `bash scripts/...` runs from the skill base directory.
 Part of jiance-stack:subagent-driven-development.
 

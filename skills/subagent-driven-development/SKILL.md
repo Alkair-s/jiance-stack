@@ -11,10 +11,13 @@ Execute plan by dispatching a fresh implementer subagent per task, a task review
 
 **Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They should never inherit your session's context or history - you construct exactly what they need. This also preserves your own context for coordination work.
 
+**Invoking this skill is asking for subagents.** Choosing subagent-driven execution at the plan handoff is the
+owner's explicit request for the implementer, reviewer and final-reviewer subagents. A standing rule to spawn
+subagents only when the user asks is met by that request. Dispatch them; do not do their work inline instead.
+
 **Core principle:** Fresh subagent per task + task review (spec + quality) + broad final review = high quality, fast iteration
 
-**Narration:** between tool calls, narrate at most one short line - the
-ledger and the tool results carry the record.
+**Narration:** between tool calls, narrate at most one short line - the ledger and the tool results carry the record.
 
 **Continuous execution:** Do not pause to check in with your human partner between tasks. Execute all tasks from the plan without stopping. The only reasons to stop are the five named below, or all tasks complete. "Should I continue?" prompts and progress summaries waste their time - they asked you to execute the plan, so execute it.
 
@@ -34,7 +37,7 @@ the owner's approval points. For those, stop and ask.
 
 **Approval points are not rulings.** "Rulings, not stalls" never overrides the owner's approval points (list in
 `jiance-stack:using-jiance`: public contract or invariant changes, two or more modules, new dependencies,
-security-review findings, missed performance targets, structure setup, edits to the project's own docs,
+security findings from any review, missed performance targets, structure setup, edits to the project's own docs,
 helpers the reviewer is unsure about). A task the plan marks "Approval point", or that turns out to hit one,
 stops at the marked step: do not dispatch past it, ask the owner, wait, and ledger the answer as
 `Approval: <point> - <owner's answer>`. The implementer prompt tells the implementer to stop and report
@@ -54,7 +57,6 @@ Skill tool shows when it loads the skill. The plugin's `config/models.md` is at 
   coupled tasks: brainstorm or restructure first.
 - Your partner did not choose inline execution and the Agent tool is available. Otherwise use
   `jiance-stack:executing-plans`.
-
 
 **vs. Executing Plans (inline):**
 - Fresh subagent per task (no context pollution) instead of one context doing every task

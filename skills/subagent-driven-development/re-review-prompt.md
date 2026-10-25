@@ -1,5 +1,7 @@
 # Scoped Re-Review Prompt Template
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/re-review-prompt.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Use this template when dispatching a re-review after a fix round. The
 re-reviewer verifies the findings were addressed and checks the fix diff for
 new breakage. It is not a fresh review - the full review already happened.

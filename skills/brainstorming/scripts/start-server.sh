@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Adapted from obra/superpowers `skills/brainstorming/scripts/start-server.sh` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
 # Start the brainstorm server and output connection info
 # Usage: start-server.sh [--project-dir <path>] [--host <bind-host>] [--url-host <display-host>] [--foreground] [--background]
 #

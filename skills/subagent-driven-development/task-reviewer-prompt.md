@@ -1,5 +1,7 @@
 # Task Reviewer Prompt Template
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/task-reviewer-prompt.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Use this template when dispatching a task reviewer subagent. The reviewer
 reads the task's diff once and returns two verdicts: spec compliance and
 code quality.

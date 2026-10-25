@@ -1,11 +1,13 @@
 # The Fix Loop
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/references/fix-loop.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Paths: links and `../` paths are relative to this file; `bash scripts/...` runs from the skill base directory.
 Part of jiance-stack:subagent-driven-development. The task review reported
 spec FAIL, a Critical or Important finding, or a WARN item you confirmed as a real
 gap.
 
-Before the loop starts, two routes leave it immediately:
+Before the loop starts, three routes leave it immediately:
 
 - Record Minor findings in the progress ledger as you go
   (`Task <N>: minor (deferred): <one-liner>`), and point the final
@@ -18,6 +20,8 @@ Before the loop starts, two routes leave it immediately:
   ledger the ruling before you act on it. Do not dismiss the finding because
   the plan mandates it, and do not dispatch a fix that contradicts the plan
   without a recorded ruling.
+- A security finding is an owner approval point: it goes to the owner before
+  any fix (ledger `Approval: security - asked`) and never enters the loop.
 Everything else enters the loop. A fix round is one fix dispatch plus one
 scoped re-review. Five rounds maximum per task:
 

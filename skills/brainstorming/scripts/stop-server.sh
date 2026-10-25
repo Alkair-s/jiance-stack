@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Adapted from obra/superpowers `skills/brainstorming/scripts/stop-server.sh` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
 # Stop the brainstorm server and clean up
 # Usage: stop-server.sh <session_dir>
 #

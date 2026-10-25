@@ -24,15 +24,15 @@ does not fit, why it cannot stay inline}}
 
 {{SEARCH_RESULTS: each query and what it found (file and function, or "no hits")}}
 
-## Diff
+## Proposed diff or sketch
 
 ```diff
-{{DIFF: the change that adds the helper and its call sites}}
+{{DIFF: the proposed change or a sketch that adds the helper and its call sites (not written yet)}}
 ```
 
 ## What to check
 
-1. Open the files the justification and the diff name. Do not judge code you have not opened.
+1. Open the files the justification and the sketch name. Do not judge code you have not opened.
 2. Search once more for existing code that does the same job: other names, the core operation, shared modules,
    the standard library and the project's existing dependencies.
 3. Count the real call sites. One call site usually means inline.

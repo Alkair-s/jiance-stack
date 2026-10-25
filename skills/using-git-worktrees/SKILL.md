@@ -85,7 +85,8 @@ Follow this priority order. Explicit user preference always beats observed files
 git check-ignore -q .worktrees 2>/dev/null || git check-ignore -q worktrees 2>/dev/null
 ```
 
-**If NOT ignored:** Add to .gitignore, commit the change, then proceed.
+**If NOT ignored:** Add the directory to `.git/info/exclude` (local, nothing to commit), then proceed. Add it to
+`.gitignore` and commit only if the owner asks: that edits the project.
 
 **Why critical:** Prevents accidentally committing worktree contents to repository.
 

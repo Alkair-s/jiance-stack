@@ -1,5 +1,7 @@
 # Builder Check Prompt
 
+> Adapted from obra/superpowers `skills/brainstorming/builder-check-prompt.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Dispatch a fresh subagent (Agent tool, `subagent_type: general-purpose`, model for role `reviewer-b` in `../../config/models.md`) with this prompt once the
 written design exists. Fill in the domain and the document path.
 

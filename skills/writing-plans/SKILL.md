@@ -57,6 +57,8 @@ depends on timing or global state, or needs expensive setup for a small change),
 instead and says so in the plan: the change, the closest real check with its command or checklist item, the
 written reason why an automated test would be bad here, and where that reason is recorded (the project's test
 checklist or progress log). A substitute without a written reason does not count.
+A task with no behaviour change (a refactor, rename or config change) has no "Write the failing test" step: its
+check is the existing suite, run green and quoted (`jiance-stack:testing`).
 
 ## Plan Document Header
 
@@ -87,7 +89,7 @@ include this section.]
 
 [The tasks that hit one of the owner's approval points, one line each: the
 task number and which point (public contract or invariant change, two or
-more modules, new dependency, security-review finding, missed performance
+more modules, new dependency, security finding from any review, missed performance
 target, project structure setup, edit to the project's own docs or
 principles, new helper the reviewer is unsure about). The full list is in
 `jiance-stack:using-jiance`. "None" means you checked.]
@@ -202,7 +204,7 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 **5. Proportion:** Compare the plan's length to the spec's. A plan several times longer than the spec it implements is a transcript of the program, not a plan. If code blocks are most of the document, replace bodies with signatures, test names and assertions, and check that each step is still unambiguous.
 
-**6. Gates:** Every task has a "New helpers" line (a list or `none`). A helper the code steps imply but no list names is a gap: reuse what exists (search first), or list it. Every task whose steps add a dependency, change a public contract, touch two or more modules or edit the project's own docs carries an "Approval point" line, and the Approval Points section lists it. Every test step has a failing run before its code, or a substitute with its written reason.
+**6. Gates:** Every task has a "New helpers" line (a list or `none`). A helper the code steps imply but no list names is a gap: reuse what exists (search first), or list it. Every task whose steps add a dependency, change a public contract, touch two or more modules or edit the project's own docs carries an "Approval point" line, and the Approval Points section lists it. Every test step has a failing run before its code, or a substitute with its written reason; a task with no behaviour change needs only the existing suite green.
 
 If you find issues, fix them inline. No need to re-review - just fix and move on. If you find a spec requirement with no task, add the task.
 

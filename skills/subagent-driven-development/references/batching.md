@@ -1,5 +1,7 @@
 # Batching Small Same-Shape Work
 
+> Adapted from obra/superpowers `skills/subagent-driven-development/references/batching.md` at `2ce8aa1` by Jesse Vincent, MIT License. See NOTICE and UPSTREAM.md.
+
 Part of jiance-stack:subagent-driven-development.
 
 **Batch small same-shape work.** When the plan lists several tasks that are

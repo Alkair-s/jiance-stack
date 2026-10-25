@@ -101,8 +101,9 @@ Agent tool, subagent_type general-purpose:
       the list and nothing shows it passed the helper gate, report it as Important.
       Private one-off code inside a single function is not a helper.
     - Did the work pass an approval point (new dependency, public contract
-      change, architecture change) that the plan marks and no owner answer is
-      recorded? Report it as Critical. Do not fix it: the owner decides.
+      change, a change touching two or more modules) that the plan marks and
+      no owner answer is recorded? Report it as Critical. Do not fix it: the
+      owner decides.
     - Is there evidence for the tests (a failing run before, a passing run after),
       not just a claim? Missing evidence is Important.
 
@@ -135,6 +136,8 @@ Agent tool, subagent_type general-purpose:
 
     For each issue:
     - File:line reference
+    - "Security:" at the start of the title when it is a security finding (the owner
+      sees those before any fix)
     - What's wrong
     - Why it matters
     - How to fix (if not obvious)

@@ -43,10 +43,11 @@ principle). A symptom fix hides the evidence and leaves the fault free to surfac
 
 ## After the Fix
 
-The fix is not done until the regression test (Phase 4, step 1) fails without it and passes with it, and the
-output is quoted per `jiance-stack:verification-before-completion`. If the fix adds a new helper that the owner has
-not approved, it passes `jiance-stack:helper-gate` first. A fix that needs a new dependency or changes a public
-contract is an approval point: stop and ask.
+Per `jiance-stack:testing`, the fix is not done until the regression test (Phase 4, step 1) fails without it and
+passes with it, or, when no sensible test exists, a recorded substitute with its written reason stands in (never a
+bad test). Quote the output per `jiance-stack:verification-before-completion`. A new helper the owner has not
+approved passes `jiance-stack:helper-gate` first. A new dependency or a public contract change is an approval point:
+stop and ask.
 
 ## When to Use
 
@@ -202,7 +203,7 @@ You MUST complete each phase before proceeding to the next.
    - Simplest possible reproduction
    - Automated test if possible
    - One-off test script if no framework
-   - MUST have before fixing
+   - MUST have before fixing (or, when no sensible test exists, the recorded substitute of `jiance-stack:testing`)
    - Use `jiance-stack:testing` for the regression test: narrowest test, show it fail for the right reason, then fix
 
 2. **Implement Single Fix**
@@ -236,7 +237,7 @@ You MUST complete each phase before proceeding to the next.
    - Are we "sticking with it through sheer inertia"?
    - Should we refactor architecture vs. continue fixing symptoms?
 
-   **Stop and bring this to the owner before attempting more fixes: changing the architecture is an owner approval point, not something to decide alone**
+   **Stop and bring this to the owner before attempting more fixes: a redesign that touches two or more modules or a public contract is an owner approval point, not something to decide alone**
 
    This is NOT a failed hypothesis - this is a wrong architecture.
 
