@@ -156,8 +156,9 @@ Before the final reply, apply `jiance-stack:verification-before-completion` (loa
 - Never write "fixed", "done", "works", "resolved", "passes", "should pass" or "should return" without
   quoting, in that reply, the output from this session that shows it. That includes the first line of the reply,
   the PROGRESS entry and the commit subject (say what the change does; a `fix:` type prefix is fine).
-- **Could not run the command** (no shell, missing toolchain, hardware): open the reply with it ("I changed
-  X; unverified: I could not run `<command>` because <reason>"), and give the exact command to run. Write any
+- **Could not run the command** (no shell, missing toolchain, hardware): make "Unverified:" the first word of
+  the reply ("Unverified: I changed X but could not run `<command>` because <reason>"), never "I fixed", and
+  give the exact command to run. Write any
   expected result once, labelled "Expected when you run it:", never as a statement about the code.
 - End with this report, filled from real output:
 
@@ -190,7 +191,7 @@ Commit: <made: hash and message | to make: files + message>
 |---|---|
 | Stopping after onboarding to wait for the structure offer | Make the change; put the offer at the end of the reply |
 | A full brainstorm for a one-line value the owner named | One sentence of intent, then the change |
-| "I've fixed it" when nothing ran | "I changed X; unverified: I could not run `<command>`" |
+| "I've fixed it" when nothing ran | "Unverified: I changed X but could not run `<command>`" |
 | Writing the PROGRESS entry as if the tests ran | Say what was run, and "not run" where it was not |
 | Treating "go ahead" as approval of a new helper | Run the helper gate; only an approved plan or the owner's answer about that helper replaces it |
 | Asking the owner before spawning the reviewer | This workflow is the request for reviewer subagents; spawn them |
