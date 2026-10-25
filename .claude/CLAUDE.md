@@ -7,6 +7,7 @@ A public, self-contained Claude Code plugin (skills, hooks, scripts, evals). It 
 
 ## Where things are
 
+- This file lives in `.claude/CLAUDE.md` (a root CLAUDE.md trips `claude plugin validate --strict`).
 - `docs/PROGRESS.md`: state file. What is done, what is next, every decision and parked item. Read it first.
 - `docs/specs/2026-10-24-jiance-stack-design.md`: the approved design. The binding authority.
 - `docs/plans/`: implementation plans, one per stage.
