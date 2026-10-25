@@ -37,6 +37,7 @@ which skill to run first.
 
 A worked example of the method is in [docs/case-study.md](docs/case-study.md).
 What is done, what is next and every decision taken so far are in [docs/PROGRESS.md](docs/PROGRESS.md).
+Working on this repo: the rules are in [.claude/CLAUDE.md](.claude/CLAUDE.md) and the eval guide in [docs/EVALS.md](docs/EVALS.md).
 
 ## Requirements
 

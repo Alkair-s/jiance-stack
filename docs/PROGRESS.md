@@ -102,6 +102,11 @@ Rulings made while building (each can be revisited):
 
 ## Log
 
+- 2026-10-25: Added `.claude/CLAUDE.md` (repo rules for future sessions: credit format and pins, adaptation
+  rules, encoding, models, commands) and `docs/EVALS.md` (how to write and run eval cases, Windows limits,
+  lessons learned). The repo CLAUDE.md lives in `.claude/` because a root CLAUDE.md fails
+  `claude plugin validate --strict`.
+
 - 2026-10-25: **Stage 1 published** as v0.1.0. GitHub had created an initial LICENSE commit; it was merged
   keeping the repo's LICENSE (copyright `Alkair-s`). Eval re-runs after the fix wave, one or two runs per case,
   plugin arm vs no-plugin baseline:
