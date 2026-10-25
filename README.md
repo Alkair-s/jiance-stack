@@ -36,6 +36,7 @@ which skill to run first.
 - `unslop`: cut AI tells from writing
 
 A worked example of the method is in [docs/case-study.md](docs/case-study.md).
+What is done, what is next and every decision taken so far are in [docs/PROGRESS.md](docs/PROGRESS.md).
 
 ## Requirements
 
