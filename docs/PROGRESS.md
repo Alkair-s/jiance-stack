@@ -30,7 +30,7 @@ Design: `docs/specs/2026-10-24-jiance-stack-design.md`. Stage 1 plan: `docs/plan
       `/plugin install jiance-stack@jiance-stack`, start a new session, and confirm the router text is injected and
       `/jiance-stack:teach` is listed. Disable superpowers first (the hook warns if it is still installed).
 - [ ] Re-run the unstable eval cases at `--runs 3` after the usage limit resets (see the log below):
-      `change-request-fix`, `helper-gate-new`, `router-change-request`, `testing-feature`, `verify-claims`.
+      `change-request-fix`, `helper-gate-new`, `router-change-request`.
 - [ ] Run the brainstorming visual companion once on a machine with Node.js (`skills/brainstorming/scripts/`);
       it was edited but never executed.
 - [ ] Create a GitHub Release for `v0.1.0` (optional; the tag exists).
@@ -106,14 +106,14 @@ Rulings made while building (each can be revisited):
   keeping the repo's LICENSE (copyright `Alkair-s`). Eval re-runs after the fix wave, one or two runs per case,
   plugin arm vs no-plugin baseline:
   - pass with a gain: `interrogate-diff` 1 vs 0, `helper-gate-justify` 1 vs 0, `testing-bad-test` 1 vs 0,
-    `blast-radius-proof` 1 vs 0, `brainstorming-scope` 1 vs 0, `plan-has-gates` 1 (baseline errored),
+    `blast-radius-proof` 1 vs 0, `brainstorming-scope` 1 vs 0, `testing-feature` 1 vs 0, `verify-claims` 1 vs 0, `plan-has-gates` 1 (baseline errored),
     `onboard-partial` 1 vs 0.67, `onboard-unstructured` 1 vs 0.67, `onboard-rule-wins` 0.83 vs 0.67,
     `evaluate-principles` 1 vs 0.5;
   - pass, no gain (regression guards): `helper-gate-private` 1 vs 1, `how-walkthrough` 1 vs 1,
     `onboard-structured` 1 vs 1;
   - unstable: `change-request-fix` 0.5 vs 0 (the reply opened with "I fixed" while nothing had run; fixed in
     c1b7cda, not re-measured yet), `helper-gate-new` 0.5 vs 1 (the skill did not fire in one run);
-  - not measured: `router-change-request` (usage limit), `testing-feature` and `verify-claims` (pending).
+  - not measured: `router-change-request` (usage limit).
   Eval spend: about 25 USD across the full suite and re-runs.
 - 2026-10-24: Stage 1 built with subagent-driven development: 15 tasks, each with a task review and fix rounds,
   then a whole-branch review (0 Critical, 5 Important, 13 Minor) and one fix wave (all Important and 11 Minor
